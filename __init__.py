@@ -1,0 +1,1 @@
+import web_of_science_crawler.main
