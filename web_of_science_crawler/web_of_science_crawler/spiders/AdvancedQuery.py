@@ -32,12 +32,12 @@ class AdvancedQuerySpider(scrapy.Spider):
 
     sort_by = "RS.D;PY.D;AU.A;SO.A;VL.D;PG.A"  # 排序方式，相关性第一
 
-    def __init__(self, query_file_path: str, output_dir: str, document_type: str = "",
-                 output_format: str = 'fieldtagged', *args, **kwargs):
+    def __init__(self, query_path: str, output_dir: str, document_type: str = "",
+                 output_format: str = 'fieldtagged', error_log_path: str = 'error.log', *args, **kwargs):
         """
         @description: Web Of Science爬虫
 
-        @param {query_file_path}: 保存所有查询式的文件的路径，要求文件内每一行为一篇论文的题目
+        @param {query_path}: 保存所有查询式的文件的路径，要求文件内每一行为一篇论文的题目
 
                {output_dir}: 保存输出文件的文件夹，文件夹内每一个文件对应一篇论文的信息
 
@@ -54,11 +54,11 @@ class AdvancedQuerySpider(scrapy.Spider):
         self.qid_list = []
         self.file_postfix_dict = {'fieldtagged': 'txt', 'saveToExcel': 'xls'}
 
-        if not query_file_path:
+        if not query_path:
             print('请指定检索式文件路径')
             sys.exit(-1)
 
-        with open(query_file_path) as query_file:
+        with open(query_path) as query_file:
             self.query_list = list(
                 (map(lambda line: 'TI=(' + line.strip('\n').strip('.') + ')', query_file.readlines())))
 
@@ -66,8 +66,8 @@ class AdvancedQuerySpider(scrapy.Spider):
             print('请指定有效的输出路径')
             sys.exit(-1)
 
-        self.error_log_file_path = os.path.dirname(query_file_path) + '/wosspider_error_log.txt'
-        self.write_error_log(self.timestamp)
+        self.error_log_path = error_log_path
+        open(self.error_log_path, 'w').close()  # 清空错误日志文件
 
     def parse(self, response):
         pattern = re.compile(self.sid_pattern)
@@ -243,5 +243,5 @@ class AdvancedQuerySpider(scrapy.Spider):
             self.write_error_log(f"Title not compatible: Expect '{expect_title}', but got '{got_title}'.")
 
     def write_error_log(self, text: str):
-        with open(self.error_log_file_path, 'a') as error_log:
+        with open(self.error_log_path, 'a') as error_log:
             error_log.write(text + '\n')
