@@ -43,7 +43,9 @@ class AdvancedQuerySpider(scrapy.Spider):
 
                {document_type}: 检索文档的格式，默认留空代表检索网站上所有文档，其他取值为"Article"......
 
-               {output_format}: 保存输出文件的格式，默认为'fieldtagged'纯文本
+               {output_format}: 保存输出文件的格式，默认为'fieldtagged'纯文本，可以改为'saveToExcel'以输出xls文件
+
+               {error_log_path}: 错误日志文件
         """
         super().__init__(*args, **kwargs)
         self.query_list = []
