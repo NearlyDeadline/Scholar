@@ -1,4 +1,4 @@
 test
 .idea
 __pycache__
-wosspider_error_log.txt
+error.log
