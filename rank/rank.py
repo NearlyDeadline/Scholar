@@ -3,10 +3,9 @@
 # @Author  : Mike
 # @File    : rank
 import pandas as pd
-from scrapy import cmdline
 import string
 import os
-from web_of_science_crawler.web_of_science_crawler.spiders import AdvancedQuery
+from web_of_science_crawler.main import AdvancedQuerySpiderRunner
 
 
 class DBLParser:
@@ -16,11 +15,11 @@ class DBLParser:
     author_name = ''
 
     def __init__(self, csv_path: str, query_path: str):
-        '''
+        """
 
         :param csv_path: DBLP的csv文件
         :param query_path: 用于Web of Science爬虫的输入文件，每一行为该作者的一篇论文的题目
-        '''
+        """
         with open(csv_path) as csv_file:
             self.data = pd.read_csv(csv_file)
 
@@ -45,16 +44,6 @@ class DBLParser:
                 query_file.write('\n' + self.title_list[i])
 
 
-def crawl(query_path: str, output_dir, document_type="", output_format='fieldtagged',
-          error_log_path: str = 'error.log'):
-    cmdline.execute(
-        r'scrapy crawl AdvancedQuery -a output_dir={} -a output_format={}'.format(
-            output_dir, output_format).split() +
-        ['-a', 'query_path={}'.format(query_path),
-         '-a', 'document_type={}'.format(document_type),
-         '-a', 'error_log_path={}'.format(error_log_path)])
-
-
 # 遍历output_dir下每个xls文件，识别第一作者/通讯作者
 class XLSParser:
     # contribution_path: 每一行表明该作者与一篇论文的关系，应包含：论文元信息（题目等），以及作者的贡献（一作/通讯/非一作非通讯/未知）
@@ -76,7 +65,8 @@ if __name__ == '__main__':
 
     xls_dir = '../test/xls'
     error_log_path = wos_input_file + '.log'
-    crawl(wos_input_file, xls_dir, output_format='saveToExcel', error_log_path=error_log_path)
+
+    a = AdvancedQuerySpiderRunner(wos_input_file, xls_dir, output_format='saveToExcel', error_log_path=error_log_path)
 
     author_contribution_path = '../test/contribution.txt'
     x = XLSParser(xls_dir, d.author_name, author_contribution_path)
