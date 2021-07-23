@@ -2,6 +2,7 @@
 # @Time    : 2021/7/14 15:09
 # @Author  : Mike
 # @File    : rank
+import csv
 import pandas as pd
 import string
 import os
@@ -85,6 +86,23 @@ class XLSParser:
 
             self.title_contribution_dict[xls_title] = pc
 
+        if os.path.exists(contribution_path):
+            with open(contribution_path, 'a', newline='') as contribution_file:
+                csv_writer = csv.writer(contribution_file)
+                for title, contribution in self.title_contribution_dict.items():
+                    row = [author_name, title, contribution.paper_path, str(contribution.is_first_author),
+                           str(contribution.is_corresponding_author)]
+                    csv_writer.writerow(row)
+        else:
+            with open(contribution_path, 'w', newline='') as contribution_file:
+                csv_writer = csv.writer(contribution_file)
+                headers = ['author_name', 'paper_title', 'paper_path', 'is_first_author', 'is_corresponding_author']
+                csv_writer.writerow(headers)
+                for title, contribution in self.title_contribution_dict.items():
+                    row = [author_name, title, contribution.paper_path, str(contribution.is_first_author),
+                           str(contribution.is_corresponding_author)]
+                    csv_writer.writerow(row)
+
 
 # 识别为相应作者的，查表获取论文排名；识别不是相应作者的，丢弃；无法确定的，单独输出
 
@@ -94,9 +112,9 @@ class Ranker:
 
 
 if __name__ == '__main__':
-    author_name = ['Khosla, Megha', 'Setty, Vinay', 'Anand, Avishek']
+    author_name = ['Khosla, Megha', 'Setty, Vinay', 'Anand, Avishek', 'Khosla, Megha']
     for an in author_name:
-        x = XLSParser('../test/xls', an, '../test/xls' + an + '.txt')
+        x = XLSParser('../test/xls', an, '../test/contrib/' + an + '.csv')
         for k, v in x.title_contribution_dict.items():
             print(f'key: {k}')
             print(f'paper_path: {v.paper_path}')
