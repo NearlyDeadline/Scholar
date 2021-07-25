@@ -5,8 +5,8 @@
 import json
 from enum import Enum
 import pandas as pd
-import DBLParser
-import XLSParser
+import dblparser
+import xlsparser
 import os
 
 
@@ -35,7 +35,7 @@ class Achievement:
     __dblp_journal_start_pattern = '<journal>'
     __dblp_conference_start_pattern = '<crossref>'
 
-    def dblp(self, dblparser: DBLParser.DBLParser):
+    def dblp(self, dblparser: dblparser.DBLParser):
         def get_venue_name(kind: str) -> str:
             result = ''
             if kind.startswith(self.__dblp_journal_start_pattern):
@@ -47,7 +47,7 @@ class Achievement:
             return result
 
         self.data['paper_title'] = dblparser.data['title']
-        self.data['index_paper_title'] = [s.strip('.') for s in self.data['paper_title']]
+        self.data['index_paper_title'] = [get_index_paper_title(s) for s in self.data['paper_title']]
         self.data['contribution'] = [Contribution.UNKNOWN.name for i in range(0, self.data.shape[0])]
         self.data['author_name'] = [dblparser.author_name for i in range(0, self.data.shape[0])]
         self.data['xls_path'] = ['' for i in range(0, self.data.shape[0])]
@@ -57,7 +57,7 @@ class Achievement:
 
         self.jcr_rank['index_paper_title'] = self.data['index_paper_title']
 
-    def wos(self, xlsparser: XLSParser.XLSParser):
+    def wos(self, xlsparser: xlsparser.XLSParser):
         def get_corresponding_author(reprint_addresses: str) -> str:
             authors = reprint_addresses.split('corresponding author')
             if len(authors) == 1:
@@ -93,8 +93,16 @@ class Achievement:
                 self.jcr_rank.loc[index_paper_title] = [index_paper_title, xls_data['Source Title'][0]]
 
     def get_rank_json(self):
-        jcr = json.load('jcr.json')
-        ccf = pd.read_csv('ccf.csv')
+        def get_ccf_rank_json(d) -> dict:
+            ccf_result = {
+                'CCF Abbr': d['CCF简称'][0],
+                'Venue Full Name': d['全称'][0],
+                'Field': d['领域'][0],
+                'Rank': d['评级'][0]}
+            return ccf_result
+
+        jcr = json.load(open('jcr.json'))
+        ccf = pd.read_csv('ccf.csv', header=0, index_col=[1])
         result = {}
         if not self.data.empty:
             result['Author Name'] = self.data['author_name'][0]
@@ -103,11 +111,21 @@ class Achievement:
                 ac = {}
                 ac['Paper Title'] = row[1]
                 ac['Contribution'] = row[2]
-                # ac['JCR'] = 查self.jcr_rank表获取jcr_key，进入jcr.json查找
-                # ac['CCF'] = 查self.ccf_rank表获取ccf_key，进入ccf.csv查找
+                jcr_key = self.jcr_rank.loc[row[0]]['jcr_key']
+                if pd.isnull(jcr_key):  # jcr_key = {float} nan
+                    ac['JCR'] = jcr[self.jcr_rank.loc[row[0]]['jcr_key']]
+                else:
+                    ac['JCR'] = {}
+                ccf_key = self.ccf_rank.loc[row[0]]['ccf_key']
+                if pd.isnull(ccf_key):
+                    ac['CCF'] = get_ccf_rank_json(ccf.loc[self.ccf_rank['DBLP简称'] == ccf_key])
+                else:
+                    ac['CCF'] = {}
                 result['Achievements'].append(ac)
 
         return json.dumps(result)
 
-    def save_csv(self, output_path: str):
-        pass  # 将self.data输出到output_path里
+    def save_csv(self, output_dir: str):
+        self.data.to_csv(output_dir + '/_achievement.csv')
+        self.ccf_rank.to_csv(output_dir + '/_ccf.csv')
+        self.jcr_rank.to_csv(output_dir + '/_jcr.csv')
