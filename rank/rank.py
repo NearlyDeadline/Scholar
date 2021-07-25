@@ -3,9 +3,26 @@
 # @Author  : Mike
 # @File    : get_rank_json
 from web_of_science_crawler.main import AdvancedQuerySpiderRunner
-import DBLParser
-import XLSParser
-import Achievement
+from dblparser import DBLParser
+from xlsparser import XLSParser
+from achievement import Achievement
+
+
+if __name__ == '__main__':
+    import json
+    dblp_raw_file = '../test/北京交通大学_article.csv'
+    d = DBLParser(dblp_raw_file)
+    xls_dir = '../test/xls'
+    x = XLSParser(xls_dir, d.author_name)
+    a = Achievement()
+    a.dblp(d)
+    a.wos(x)
+    rank_json = a.get_rank_json()
+    with open ('../test/result.json', 'w') as f:
+        f.write(json.dumps(rank_json))
+    achi_csv_path = '../test/contrib/' + d.author_name + '.csv'
+    a.save_as_csv(achi_csv_path)
+
 
 
 def main():
