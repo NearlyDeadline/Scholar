@@ -8,6 +8,7 @@ import pandas as pd
 import dblparser
 import xlsparser
 import os
+from multidict import CIMultiDict
 
 
 class Contribution(Enum):
@@ -23,14 +24,9 @@ def get_index_paper_title(paper_title):
 class Achievement:
     def __init__(self):
         self.data = pd.DataFrame(
-            columns=('index_paper_title', 'paper_title', 'contribution', 'author_name', 'xls_path'))
-        self.data.set_index(['index_paper_title', 'paper_title'])
-
-        self.ccf_rank = pd.DataFrame(columns=('index_paper_title', 'ccf_key'))
-        self.ccf_rank.set_index('index_paper_title')
-
-        self.jcr_rank = pd.DataFrame(columns=('index_paper_title', 'jcr_key'))
-        self.jcr_rank.set_index('index_paper_title')
+            columns=('paper_title', 'contribution', 'author_name', 'xls_path'))
+        self.ccf_rank = pd.DataFrame(columns=['ccf_key'])
+        self.jcr_rank = pd.DataFrame(columns=['jcr_key'])
 
     __dblp_journal_start_pattern = '<journal>'
     __dblp_conference_start_pattern = '<crossref>'
@@ -47,27 +43,22 @@ class Achievement:
                 pass
             return result
 
-        self.data['paper_title'] = dblparser.data['title']
-        # self.data['index_paper_title'] = [get_index_paper_title(s) for s in self.data['paper_title']]
-        # self.data['contribution'] = [Contribution.UNKNOWN.name for i in range(0, self.data.shape[0])]
-        # self.data['author_name'] = [dblparser.author_name for i in range(0, self.data.shape[0])]
-        # self.data['xls_path'] = ['' for i in range(0, self.data.shape[0])]
-        self.data['index_paper_title'] = self.data['paper_title'].map(get_index_paper_title)
-        self.data['contribution'] = self.data['paper_title'].map(lambda c: Contribution.UNKNOWN.name)
-        self.data['author_name'] = self.data['paper_title'].map(lambda a: dblparser.author_name)
-        self.data['xls_path'] = self.data['paper_title'].map(lambda x: '')
-        # self.data.set_index(['index_paper_title', 'paper_title'])
+        contribution = Contribution.UNKNOWN.name
+        author_name = dblparser.author_name
+        xls_path = ''
+        jcr_key = ''
+        for row in dblparser.data.itertuples():  # TODO: 使用map函数向量化，注意set_index需要赋值
+            paper_title = row[3]
+            index_paper_title = get_index_paper_title(paper_title)
+            self.data.loc[index_paper_title] = [paper_title, contribution, author_name, xls_path]
 
-        self.ccf_rank['index_paper_title'] = self.data['index_paper_title']
-        # self.ccf_rank['ccf_key'] = [get_venue_name(v) for v in dblparser.data['kind']]
-        self.ccf_rank['ccf_key'] = dblparser.data['kind'].map(get_venue_name)
-        # self.ccf_rank.set_index('index_paper_title')
+            ccf_key = get_venue_name(row[5])
+            self.ccf_rank.loc[index_paper_title] = [ccf_key]
 
-        self.jcr_rank['index_paper_title'] = self.data['index_paper_title']
-        # self.jcr_rank.set_index('index_paper_title')
+            self.jcr_rank.loc[index_paper_title] = [jcr_key]
 
     def wos(self, xlsparser: xlsparser.XLSParser):
-        def get_corresponding_author(reprint_addresses: str) -> str:
+        def get_corresponding_author(reprint_addresses: str) -> str:  # TODO: 通讯作者姓名顺序与XLS中的一致，且名字为简写(Zhang BP)，需要从Authors列判断
             authors = reprint_addresses.split('corresponding author')
             if len(authors) == 1:
                 authors = reprint_addresses.split('Corresponding author')
@@ -80,8 +71,7 @@ class Achievement:
             xls_data = pd.read_excel(xlsparser.xls_dir + '/' + xls)
             xls_title = xls_data['Article Title'][0]
             index_paper_title = get_index_paper_title(xls_title)
-            row = self.data.loc[self.data['index_paper_title'] == index_paper_title]
-            if row.empty:
+            if self.data.loc[index_paper_title].empty:
                 print("未找到dblp数据，请检查web of science论文题目与dblp论文题目是否一致")
             else:
                 xls_first_author = ''.join(
@@ -89,33 +79,38 @@ class Achievement:
                 xls_corresponding_author = get_corresponding_author(xls_data['Reprint Addresses'][0])
                 author_name = ''.join(list(filter(lambda ch: str.isalpha(ch), xlsparser.author_name.lower())))
 
-                current_contribution = row.iloc[0]['contribution']
-                if author_name.startswith(xls_first_author) and current_contribution == Contribution.UNKNOWN.name:
+                current_contribution = self.data.loc[index_paper_title, 'contribution']
+                if author_name.startswith(xls_first_author) and current_contribution == Contribution.UNKNOWN.name:  # TODO: 名字可能反过来(Zhang Baopeng与Baopeng Zhang)，第一作者需要考虑到反过来的情况，只反转DBLP，不要动XLS
                     c = Contribution.FIRST_AUTHOR.name
-                    row.iloc[0]['contribution'] = c
+                    self.data.loc[index_paper_title, 'contribution'] = c
                 elif author_name.startswith(
                         xls_corresponding_author) and current_contribution == Contribution.UNKNOWN.name:
                     c = Contribution.CORRESPONDING_AUTHOR.name
-                    row.iloc[0]['contribution'] = c
-                row.iloc[0]['xls_path'] = xlsparser.xls_dir + '/' + xls
+                    self.data.loc[index_paper_title, 'contribution'] = c
+                self.data.loc[index_paper_title, 'xls_path'] = xlsparser.xls_dir + '/' + xls
 
-                self.jcr_rank.loc[index_paper_title] = [index_paper_title, xls_data['Source Title'][0]]  # TODO:修复索引bug
+                self.jcr_rank.loc[index_paper_title] = [xls_data['Source Title'][0]]
 
     def get_rank_json(self):
         def get_ccf_rank_dict(_ccf_key: str) -> dict:
             """
             :param _ccf_key可能有两种情况：
-            (1)期刊：XLS文件的Source Title列，需要与ccf.csv的“全称”列对应
-            (2)会议：DBLP文件里提取的简称，需要与ccf.csv的“DBLP简称”列对应
+
+            (1)会议：DBLP文件里提取的简称，需要与ccf.csv的“DBLP简称”或“CCF简称”列对应
+
+            (2)期刊：XLS文件的Source Title列，需要与ccf.csv的“全称”列对应。这里需无视大小写
+
             由于无法区分两种情况的值，所以依次搜索两列，凡可得到结果的情况就作为结果
             """
             ccf = pd.read_csv('ccf.csv', header=0, index_col=[0])
-            ccf_row = ccf.loc[self.ccf_rank['DBLP简称'] == _ccf_key]
+            ccf_row = ccf.loc[ccf['DBLP简称'] == _ccf_key]
             if ccf_row.empty:
-                _ccf_key2 = ''.join(list(filter(lambda ch: str.isalpha(ch), _ccf_key.lower())))  # ieeejournalofselectedareasincommunications
-                ccf_row = ccf.loc[self.ccf_rank['索引'] == _ccf_key2]
+                ccf_row = ccf.loc[ccf['CCF简称'] == _ccf_key.upper()]
                 if ccf_row.empty:
-                    print(f"无法在CCF表中查到该期刊: {ccf_key}")
+                    ccf_row = ccf.loc[_ccf_key]  # TODO: 由直接访问索引改为可判断empty模式，不再抛出异常
+                    if ccf_row.empty:
+                        print(f"无法在CCF表中查到该期刊: {_ccf_key}")
+                        return {}
 
             ccf_result = {
                 'CCF Abbr': ccf_row['CCF简称'][0],
@@ -132,7 +127,9 @@ class Achievement:
             jcr_rank_dict = {}
             if not pd.isna(_jcr_key):
                 jcr = json.load(open('jcr.json'))
-                jcr_rank_dict = jcr[self.jcr_rank.loc[row[0]]['jcr_key']]
+                jcr = CIMultiDict(jcr)
+                if jcr.get(_jcr_key):
+                    jcr_rank_dict = jcr.get(_jcr_key)
             return jcr_rank_dict
 
         result = {}
@@ -143,13 +140,22 @@ class Achievement:
                 ac = {}
                 ac['Paper Title'] = row[1]
                 ac['Contribution'] = row[2]
-                jcr_key = self.jcr_rank.loc[row[0]]['jcr_key']
-                ac['JCR'] = get_jcr_rank_dict(jcr_key)
+                ac['Venue'] = ''
                 ccf_key = self.ccf_rank.loc[row[0]]['ccf_key']
-                ac['CCF'] = get_ccf_rank_dict(ccf_key)
+                if ccf_key:
+                    ac['CCF'] = get_ccf_rank_dict(ccf_key)
+                    ac['Venue'] = ccf_key
+                else:  # TODO: 用jcr_key传入get_ccf_rank_dict里
+                    ac['CCF'] = {}
+                jcr_key = self.jcr_rank.loc[row[0]]['jcr_key']
+                if jcr_key:
+                    ac['JCR'] = get_jcr_rank_dict(jcr_key)
+                    ac['Venue'] = jcr_key
+                else:
+                    ac['JCR'] = {}
                 result['Achievements'].append(ac)
 
-        return json.dumps(result)
+        return result
 
     def save_csv(self, output_dir: str):
         self.data.to_csv(output_dir + '/_achievement.csv')
