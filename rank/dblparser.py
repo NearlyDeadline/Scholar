@@ -15,7 +15,7 @@ class DBLParser:
         """
         with open(csv_path) as csv_file:
             self.data = pd.read_csv(csv_file)
-            self.author_name = self.data['name'][0].rstrip(string.digits).strip(' ')
+            self.author_name = self.data['name'][0].rstrip(string.digits).rstrip(string.punctuation)
 
     def save_for_spider(self, query_path):
         """
