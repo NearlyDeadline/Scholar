@@ -64,6 +64,7 @@ class Achievement:
         # self.ccf_rank.set_index('index_paper_title')
 
         self.jcr_rank['index_paper_title'] = self.data['index_paper_title']
+        # self.jcr_rank.set_index('index_paper_title')
 
     def wos(self, xlsparser: xlsparser.XLSParser):
         def get_corresponding_author(reprint_addresses: str) -> str:
@@ -98,7 +99,7 @@ class Achievement:
                     row.iloc[0]['contribution'] = c
                 row.iloc[0]['xls_path'] = xlsparser.xls_dir + '/' + xls
 
-                self.jcr_rank.loc[index_paper_title] = [index_paper_title, xls_data['Source Title'][0]]
+                self.jcr_rank.loc[index_paper_title] = [index_paper_title, xls_data['Source Title'][0]]  # TODO:修复索引bug
 
     def get_rank_json(self):
         def get_ccf_rank_dict(_ccf_key: str) -> dict:
@@ -108,11 +109,11 @@ class Achievement:
             (2)会议：DBLP文件里提取的简称，需要与ccf.csv的“DBLP简称”列对应
             由于无法区分两种情况的值，所以依次搜索两列，凡可得到结果的情况就作为结果
             """
-            ccf = pd.read_csv('ccf.csv', header=0, index_col=[1])
+            ccf = pd.read_csv('ccf.csv', header=0, index_col=[0])
             ccf_row = ccf.loc[self.ccf_rank['DBLP简称'] == _ccf_key]
             if ccf_row.empty:
                 _ccf_key2 = ''.join(list(filter(lambda ch: str.isalpha(ch), _ccf_key.lower())))  # ieeejournalofselectedareasincommunications
-                ccf_row = ccf.loc[self.ccf_rank['索引'] == _ccf_key2]  # TODO:为ccf.csv增加'索引'列
+                ccf_row = ccf.loc[self.ccf_rank['索引'] == _ccf_key2]
                 if ccf_row.empty:
                     print(f"无法在CCF表中查到该期刊: {ccf_key}")
 
