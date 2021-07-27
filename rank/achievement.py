@@ -17,7 +17,7 @@ class Contribution(Enum):
     CORRESPONDING_AUTHOR = 20
 
 
-def get_index_paper_title(paper_title):
+def get_index_paper_title(paper_title: str) -> str:
     return ''.join(list(filter(lambda c: str.isalpha(c), paper_title.lower())))
 
 
@@ -92,6 +92,11 @@ class Achievement:
                 self.jcr_rank.loc[index_paper_title] = [xls_data['Source Title'][0]]
 
     def get_rank_json(self):
+        """
+        (1)期刊：JCR和CCF内都有信息，且均用jcr_key
+
+        (2)会议：JCR没有信息，只从CCF表提取，使用ccf_key
+        """
         def get_ccf_rank_dict(_ccf_key: str) -> dict:
             """
             :param _ccf_key可能有两种情况：
@@ -103,14 +108,25 @@ class Achievement:
             由于无法区分两种情况的值，所以依次搜索两列，凡可得到结果的情况就作为结果
             """
             ccf = pd.read_csv('ccf.csv', header=0, index_col=[0])
+            ccf.fillna('', inplace=True)
+
+            if _ccf_key in ccf.index:  # 期刊，直接访问索引
+                ccf_row = ccf.loc[_ccf_key]
+                ccf_result = {
+                    'CCF Abbr': ccf_row['CCF简称'],
+                    'Venue Full Name': ccf_row['全称'],
+                    'Field': ccf_row['领域'],
+                    'Rank': ccf_row['评级']
+                }
+                return ccf_result
+
+            # 会议，依次搜索DBLP简称，CCF简称列。这里不是访问索引，因此需要访问第0个元素
             ccf_row = ccf.loc[ccf['DBLP简称'] == _ccf_key]
             if ccf_row.empty:
                 ccf_row = ccf.loc[ccf['CCF简称'] == _ccf_key.upper()]
                 if ccf_row.empty:
-                    ccf_row = ccf.loc[_ccf_key]  # TODO: 由直接访问索引改为可判断empty模式，不再抛出异常
-                    if ccf_row.empty:
-                        print(f"无法在CCF表中查到该期刊: {_ccf_key}")
-                        return {}
+                    print(f"无法在CCF表中查到该文献的发表刊物: {_ccf_key}")
+                    return {}
 
             ccf_result = {
                 'CCF Abbr': ccf_row['CCF简称'][0],
@@ -122,7 +138,7 @@ class Achievement:
 
         def get_jcr_rank_dict(_jcr_key: str) -> dict:
             """
-            :param _jcr_key只有一种情况：期刊。直接提取XLS文件里的Source Title列即可
+            :param _jcr_key只有一种情况：期刊。直接查表即可
             """
             jcr_rank_dict = {}
             if not pd.isna(_jcr_key):
@@ -137,22 +153,22 @@ class Achievement:
             result['Author Name'] = self.data['author_name'][0]
             result['Achievements'] = []
             for row in self.data.itertuples():
-                ac = {}
-                ac['Paper Title'] = row[1]
-                ac['Contribution'] = row[2]
-                ac['Venue'] = ''
-                ccf_key = self.ccf_rank.loc[row[0]]['ccf_key']
-                if ccf_key:
-                    ac['CCF'] = get_ccf_rank_dict(ccf_key)
-                    ac['Venue'] = ccf_key
-                else:  # TODO: 用jcr_key传入get_ccf_rank_dict里
-                    ac['CCF'] = {}
+                ac = {
+                    'Paper Title': row[1],
+                    'Contribution': row[2],
+                    'Venue': '',
+                    'JCR': {},
+                    'CCF': {}
+                }
                 jcr_key = self.jcr_rank.loc[row[0]]['jcr_key']
-                if jcr_key:
+                if jcr_key:  # 先查一下JCR信息。对于Web of Science收录的期刊论文，应当一直进入本if判断语句
                     ac['JCR'] = get_jcr_rank_dict(jcr_key)
-                    ac['Venue'] = jcr_key
-                else:
-                    ac['JCR'] = {}
+                    ac['Venue'] = {'Journal': jcr_key}
+                    ac['CCF'] = get_ccf_rank_dict(get_index_paper_title(jcr_key))
+                if not ac['JCR']:  # JCR没有有用的信息。既有可能是会议论文，jcr_key为空；又有可能是上述jcr_key查表过程没有有用信息
+                    ccf_key = self.ccf_rank.loc[row[0]]['ccf_key']
+                    ac['Venue'] = {'Conference': ccf_key}
+                    ac['CCF'] = get_ccf_rank_dict(ccf_key)
                 result['Achievements'].append(ac)
 
         return result
