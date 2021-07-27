@@ -25,6 +25,5 @@ class DBLParser:
             title_list = []
             for title in self.data['title']:
                 title_list.append(title)
-            query_file.write(title_list[0])
-            for i in range(1, len(title_list)):
-                query_file.write('\n' + title_list[i])
+            for i in range(0, len(title_list)):
+                query_file.write(title_list[i] + '\n')
