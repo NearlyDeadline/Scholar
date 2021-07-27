@@ -25,8 +25,8 @@ if __name__ == '__main__':
     a.dblp(d)
     a.wos(x)
     rank_json = a.get_rank_json()
-    with open(dblp_raw_dir + 'achievement.json', 'w') as f:
-        f.write(json.dumps(rank_json))
+    with open(dblp_raw_dir + 'achievement.json', 'w', encoding='utf-8') as f:
+        f.write(json.dumps(rank_json, indent=4, ensure_ascii=False))
     achi_csv_path = dblp_raw_dir
     a.save_as_csv(achi_csv_path)
 
