@@ -5,8 +5,8 @@
 import json
 from enum import Enum
 import pandas as pd
-import dblparser
-import xlsparser
+from rank.dblparser import DBLParser
+from rank.xlsparser import XLSParser
 import os
 from multidict import CIMultiDict
 
@@ -31,7 +31,7 @@ class Achievement:
     __dblp_journal_start_pattern = '<journal>'
     __dblp_conference_start_pattern = '<crossref>'
 
-    def load_dblp(self, dp: dblparser.DBLParser):
+    def load_dblp(self, dp: DBLParser):
         def get_venue_name(kind: str) -> str:
             result = ''
             if kind.startswith(self.__dblp_journal_start_pattern):
@@ -55,7 +55,7 @@ class Achievement:
             self.ccf_rank.loc[index_paper_title] = [ccf_key]
             self.jcr_rank.loc[index_paper_title] = [jcr_key]
 
-    def load_wos(self, xp: xlsparser.XLSParser) -> str:
+    def load_wos(self, xp: XLSParser):
         def get_corresponding_author(reprint_addresses: str) -> str:
             ra = reprint_addresses.split('(corresponding author)')
             if len(ra) == 1:
@@ -146,7 +146,7 @@ class Achievement:
 
         def get_jcr_rank_dict(jcr_key_: str) -> dict:
             """
-            :param _jcr_key只有一种情况：期刊。直接查表即可
+            :param jcr_key_只有一种情况：期刊。直接查表即可
             """
             jcr_rank_dict = {}
             if not pd.isna(jcr_key_):
