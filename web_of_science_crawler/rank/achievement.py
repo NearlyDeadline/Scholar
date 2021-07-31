@@ -5,8 +5,8 @@
 import json
 from enum import Enum
 import pandas as pd
-from rank.dblparser import DBLParser
-from rank.xlsparser import XLSParser
+from .dblparser import DBLParser
+from .xlsparser import XLSParser
 import os
 from multidict import CIMultiDict
 

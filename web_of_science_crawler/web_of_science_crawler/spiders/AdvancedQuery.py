@@ -71,7 +71,7 @@ class AdvancedQuerySpider(scrapy.Spider):
         self.error_log_path = error_log_path
         open(self.error_log_path, 'w').close()  # 清空错误日志文件
 
-    def parse(self, response):
+    def parse(self, response, **kwargs):
         pattern = re.compile(self.sid_pattern)
         result = re.search(pattern, response.url)
         if result is not None:
