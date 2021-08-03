@@ -31,8 +31,7 @@ class AdvancedQuerySpider(scrapy.Spider):
 
     sort_by = "RS.D;PY.D;AU.A;SO.A;VL.D;PG.A"  # 排序方式，相关性第一
 
-    def __init__(self, query_path: str, output_dir: str, document_type: str = "",
-                 output_format: str = 'fieldtagged', error_log_path: str = 'error.log', *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         """
         @description: Web Of Science爬虫
 
@@ -48,9 +47,11 @@ class AdvancedQuerySpider(scrapy.Spider):
         """
         super().__init__(*args, **kwargs)
         self.query_list = []
-        self.output_path_prefix = output_dir
-        self.document_type = document_type
-        self.output_format = output_format
+        self.output_path_prefix = kwargs['kwargs']['output_dir']
+        self.document_type = kwargs['kwargs']['document_type']
+        self.output_format = kwargs['kwargs']['output_format']
+        self.error_log_path = kwargs['kwargs']['error_log_path']
+        query_path = kwargs['kwargs']['query_path']
         self.sid = None
         self.qid_list = []
         self.file_postfix_dict = {'fieldtagged': 'txt', 'saveToExcel': 'xls'}
@@ -63,11 +64,9 @@ class AdvancedQuerySpider(scrapy.Spider):
             self.query_list = list(
                 (map(lambda line: 'TI=(' + line.strip('\n').strip('.') + ')', query_file.readlines())))
 
-        if output_dir is None:
+        if self.output_path_prefix is None:
             print('请指定有效的输出路径')
             sys.exit(-1)
-
-        self.error_log_path = error_log_path
 
     def init_error_log(self):
         open(self.error_log_path, 'w').close()  # 清空错误日志文件
@@ -229,7 +228,7 @@ class AdvancedQuerySpider(scrapy.Spider):
 
         elif file_postfix == 'xls':
             xls_df = pd.read_excel(response.body)
-            got_title = ''.join(list(filter(lambda c: str.isalpha(c),  xls_df['Article Title'][0].lower())))
+            got_title = ''.join(list(filter(lambda c: str.isalpha(c), xls_df['Article Title'][0].lower())))
             expect_title = get_title_from_query(query)
 
             if expect_title == got_title:
