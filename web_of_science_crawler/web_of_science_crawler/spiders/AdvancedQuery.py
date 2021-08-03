@@ -21,8 +21,8 @@ class AdvancedQuerySpider(scrapy.Spider):
     end_year = time.strftime('%Y')
 
     # 提取URL中的SID和QID所需要的正则表达式
-    sid_pattern = r'SID=(\w+)&'
-    qid_pattern = r'qid=(\d+)&'
+    sid_pattern = r'SID=(\w+)'
+    qid_pattern = r'qid=(\d+)'
 
     # 提取已购买数据库的正则表达式
     db_pattern = r'WOS\.(\w+)'
@@ -127,28 +127,29 @@ class AdvancedQuerySpider(scrapy.Spider):
         # 通过bs4解析html找到检索结果的入口
         soup = BeautifulSoup(response.text, 'lxml')
         entry = soup.find('a', attrs={'title': 'Click to view the results'})
-        if entry:
-            entry_url = 'https://apps.webofknowledge.com' + entry.get('href')
 
-            # 找到入口url中的QID，存放起来以供下一步处理函数使用
-            pattern = re.compile(self.qid_pattern)
-            result = re.search(pattern, entry_url)
-            if result is not None:
-                qid = result.group(1)
-                print('提取得到qid：', qid)
-                if qid in self.qid_list:
-                    self.write_error_log(f"Duplicate qid. Probably because the query '{query}' got nothing.")
-                    return
-                self.qid_list.append(qid)
-            else:
-                qid = None
-                print('qid提取失败')
-                exit(-1)
+        if not entry:
+            self.write_error_log(f"No entry. Please check {query}.")
+            return
+        entry_url = 'https://apps.webofknowledge.com' + entry.get('href')
 
-            yield Request(entry_url, callback=self.parse_download_link,
-                          meta={'sid': sid, 'query': query, 'qid': qid})
+        # 找到入口url中的QID，存放起来以供下一步处理函数使用
+        pattern = re.compile(self.qid_pattern)
+        result = re.search(pattern, entry_url)
+        if result is not None:
+            qid = result.group(1)
+            print('提取得到qid：', qid)
+            if qid in self.qid_list:
+                self.write_error_log(f"Duplicate qid. Probably because the query '{query}' got nothing.")
+                return
+            self.qid_list.append(qid)
         else:
-            pass
+            qid = None
+            print('qid提取失败')
+            exit(-1)
+
+        yield Request(entry_url, callback=self.parse_download_link,
+                          meta={'sid': sid, 'query': query, 'qid': qid})
 
     def parse_download_link(self, response):
         sid = response.meta['sid']
@@ -177,7 +178,7 @@ class AdvancedQuerySpider(scrapy.Spider):
             "mode": "OpenOutputService",
             "qid": str(qid),
             "SID": str(sid),
-            "format": "saveToFile",
+            "format": self.output_format,  # txt: saveToFile; xls: saveToExcel
             "filters": "HIGHLY_CITED HOT_PAPER OPEN_ACCESS PMID USAGEIND AUTHORSIDENTIFIERS ACCESSION_NUM FUNDING SUBJECT_CATEGORY JCR_CATEGORY LANG IDS PAGEC SABBR CITREFC ISSN PUBINFO KEYWORDS CITTIMES ADDRS CONFERENCE_SPONSORS DOCTYPE CITREF ABSTRACT CONFERENCE_INFO SOURCE TITLE AUTHORS  ",
             "mark_to": str(end),
             "mark_from": str(start),
