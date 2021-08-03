@@ -6,11 +6,10 @@ import os
 import re
 import sys
 import time
-
+import pandas as pd
 import scrapy
 from bs4 import BeautifulSoup
 from scrapy.http import FormRequest
-from scrapy.http import Request
 
 
 class AdvancedQuerySpider(scrapy.Spider):
@@ -69,6 +68,8 @@ class AdvancedQuerySpider(scrapy.Spider):
             sys.exit(-1)
 
         self.error_log_path = error_log_path
+
+    def init_error_log(self):
         open(self.error_log_path, 'w').close()  # 清空错误日志文件
 
     def parse(self, response, **kwargs):
@@ -148,14 +149,6 @@ class AdvancedQuerySpider(scrapy.Spider):
             print('qid提取失败')
             exit(-1)
 
-        yield Request(entry_url, callback=self.parse_download_link,
-                          meta={'sid': sid, 'query': query, 'qid': qid})
-
-    def parse_download_link(self, response):
-        sid = response.meta['sid']
-        query = response.meta['query']
-        qid = response.meta['qid']
-
         # 爬第一篇
         start = 1
         end = 1
@@ -190,15 +183,19 @@ class AdvancedQuerySpider(scrapy.Spider):
             "markFrom": str(start),
             "markTo": str(end),
             "fields_selection": "HIGHLY_CITED HOT_PAPER OPEN_ACCESS PMID USAGEIND AUTHORSIDENTIFIERS ACCESSION_NUM FUNDING SUBJECT_CATEGORY JCR_CATEGORY LANG IDS PAGEC SABBR CITREFC ISSN PUBINFO KEYWORDS CITTIMES ADDRS CONFERENCE_SPONSORS DOCTYPE CITREF ABSTRACT CONFERENCE_INFO SOURCE TITLE AUTHORS  ",
-            "save_options": self.output_format
+            # "save_options": self.output_format
         }
 
-        output_url = 'https://apps.webofknowledge.com/OutboundService.do?action=go&&'
+        output_url = 'https://apps.webofknowledge.com/OutboundService.do?action=go&&save_options=' + self.file_postfix_dict.get(
+            self.output_format)
         yield FormRequest(output_url, method='POST', formdata=output_form, dont_filter=True,
                           callback=self.download,
                           meta={'sid': sid, 'query': query, 'qid': qid})
 
     def download(self, response):
+        def get_title_from_query(_query: str) -> str:
+            return ''.join(filter(lambda c: str.isalpha(c), _query[4:-1].lower()))
+
         file_postfix = self.file_postfix_dict.get(self.output_format)
         if file_postfix is None:
             print('找不到文件原始后缀，使用txt后缀保存')
@@ -208,43 +205,41 @@ class AdvancedQuerySpider(scrapy.Spider):
         query = response.meta['query']
         qid = response.meta['qid']
 
-        text = response.text
-
-        def filter_cond(c: str) -> bool:
-            return str.isalpha(c)
-
-        expect_title = ''.join(filter(filter_cond, query[4:-1].lower()))
-
-        def get_title_from_response(_response: str) -> str:
+        if file_postfix == 'txt':
             def get_title_from_txt(__response: str) -> str:
                 ti_pattern = '\nTI '
                 ti_index = __response.find(ti_pattern)
                 text_title = ''
                 i = ti_index + len(ti_pattern)
                 while response[i] != '\n':
-                    text_title = text_title + __response[i]
+                    text_title += __response[i]
                     i = i + 1
                 return text_title
 
-            def get_title_from_xls(__response: str) -> str:
-                import pandas as pd
-                e = pd.read_excel(__response)
-                return e['Source Title'][0]
+            expect_title = get_title_from_query(query)
+            got_title = get_title_from_txt(response)
+            # 保存为文件
+            if expect_title == got_title:
+                filename = self.output_path_prefix + '/advanced_query/{}.{}'.format(qid, file_postfix)
+                os.makedirs(os.path.dirname(filename), exist_ok=True)
+                with open(filename, 'w', encoding='utf-8') as file:
+                    file.write(response.text)
+            else:
+                self.write_error_log(f"Title not compatible: Expect '{expect_title}', but got '{got_title}'.")
 
-            got_title_ = ''.join(
-                filter(filter_cond, eval('get_title_from_' + file_postfix + "(" + _response + ")").lower()))
-            return got_title_
+        elif file_postfix == 'xls':
+            xls_df = pd.read_excel(response.body)
+            got_title = ''.join(list(filter(lambda c: str.isalpha(c),  xls_df['Article Title'][0].lower())))
+            expect_title = get_title_from_query(query)
 
-        got_title = get_title_from_response(response)
-        # 保存为文件
-        if expect_title == got_title:
-            filename = self.output_path_prefix + '/advanced_query/{}.{}'.format(qid, file_postfix)
-            os.makedirs(os.path.dirname(filename), exist_ok=True)
-            with open(filename, 'w', encoding='utf-8') as file:
-                file.write(text)
-        else:
-            self.write_error_log(f"Title not compatible: Expect '{expect_title}', but got '{got_title}'.")
+            if expect_title == got_title:
+                filename = self.output_path_prefix + f'/{qid}.xls'
+                with open(filename, 'wb+') as xls_file:
+                    xls_file.write(response.body)
+            else:
+                self.write_error_log(f"Title not compatible: Expect '{expect_title}', but got '{got_title}'.")
 
     def write_error_log(self, text: str):
         with open(self.error_log_path, 'a') as error_log:
+            error_log.write(self.timestamp + ': ')
             error_log.write(text + '\n')
