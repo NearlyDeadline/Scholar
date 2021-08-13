@@ -105,9 +105,10 @@ class Achievement:
         (2)会议：JCR没有信息，只从CCF表提取，使用ccf_key
         """
 
-        def get_ccf_rank_dict(ccf_key_: str) -> dict:
+        def get_ccf_rank_dict(ccf_key_: str, year: str = '2019') -> dict:
             """
             :param ccf_key_可能有两种情况：
+            :param year 年份，2015或2019
 
             (1)会议：DBLP文件里提取的简称，需要与ccf.csv的“DBLP简称”或“CCF简称”列对应
 
@@ -115,7 +116,7 @@ class Achievement:
 
             由于无法区分两种情况的值，所以依次搜索两列，凡可得到结果的情况就作为结果
             """
-            ccf_data = pd.read_csv('ccf.csv', header=0, index_col=[0])
+            ccf_data = pd.read_csv(f'ccf_{year}.csv', header=0, index_col=[0])
             ccf_data.fillna('', inplace=True)
 
             if ccf_key_ in ccf_data.index:  # 期刊，直接访问索引
@@ -144,13 +145,14 @@ class Achievement:
             }
             return ccf_rank_dict
 
-        def get_jcr_rank_dict(jcr_key_: str) -> dict:
+        def get_jcr_rank_dict(jcr_key_: str, year: str = '2019') -> dict:
             """
             :param jcr_key_只有一种情况：期刊。直接查表即可
+            :param year 年份，'2015'-'2020'之间的值
             """
             jcr_rank_dict = {}
             if not pd.isna(jcr_key_):
-                jcr = json.load(open('jcr.json'))
+                jcr = json.load(open(f'jcr_{year}.json'))
                 jcr = CIMultiDict(jcr)
                 if jcr.get(jcr_key_):
                     jcr_rank_dict = jcr.get(jcr_key_)

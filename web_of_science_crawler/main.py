@@ -33,7 +33,20 @@ def main(args):
                 logging.info(f"未在{dblp_raw_full_dir}文件夹内发现csv文件")
                 continue
 
-            d = DBLParser(dblp_raw_file)
+            try:
+                d = DBLParser(dblp_raw_file)
+            except UnicodeError:
+                with open("./unicode_error.log", 'a') as ue:
+                    ue.write(f'Found Chinese Character in ({dblp_raw_full_dir})\n')
+                continue
+            except IndexError:
+                with open("./unicode_error.log", 'a') as ue:
+                    ue.write(f'Found Nothing in ({dblp_raw_full_dir})\n')
+                continue
+            except BaseException:
+                with open("./unicode_error.log", 'a') as ue:
+                    ue.write(f'Found Unknown Error in ({dblp_raw_full_dir})\n')
+                continue
             wos_input_file = dblp_raw_full_dir + '/wos_input.txt'
             d.save_for_spider(wos_input_file)
             logging.info('DBLP文件解析完毕，已生成爬虫输入')
@@ -41,6 +54,7 @@ def main(args):
             xls_dir = dblp_raw_full_dir + '/xls'
             if os.path.exists(xls_dir):
                 print(f"已存在{xls_dir}文件夹")
+                continue
             else:
                 os.mkdir(xls_dir)
             kwargs = {
