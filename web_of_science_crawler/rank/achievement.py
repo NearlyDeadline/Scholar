@@ -22,40 +22,62 @@ def get_index_paper_title(paper_title: str) -> str:
 
 
 class Achievement:
-    def __init__(self):
-        self.data = pd.DataFrame(
-            columns=('paper_title', 'contribution', 'dblp_author_name', 'xls_path'))
-        self.ccf_rank = pd.DataFrame(columns=['ccf_key'])
-        self.jcr_rank = pd.DataFrame(columns=['jcr_key'])
+    def __init__(self, author_name):
+        self.paper_table = pd.DataFrame(
+            columns=('paper_title', 'pub_year', 'contribution', 'ccf_key', 'jcr_key'))
+        self.author_name = author_name
 
-    __dblp_journal_start_pattern = '<journal>'
-    __dblp_conference_start_pattern = '<crossref>'
+    def add_paper(self, paper_title: str, pub_year: str, contribution: Contribution = Contribution.UNKNOWN, ccf_key: str = '', jcr_key: str = ''):
+        index_paper_title = get_index_paper_title(paper_title)
+        self.paper_table.loc[index_paper_title] = [paper_title, pub_year, contribution.name, ccf_key, jcr_key]
+        
+    def delete_paper(self, paper_title: str):
+        index_paper_title = get_index_paper_title(paper_title)
+        if index_paper_title not in self.paper_table.index:
+            print(f"Can not found paper {paper_title}")
+            return
+        self.paper_table.drop([index_paper_title], inplace=True)
+
+    def set_column_value(self, paper_title: str, column_name: str, value: str):
+        if column_name not in self.paper_table.columns:
+            print(f'{column_name} is not a column name.')
+            return
+        index_paper_title = get_index_paper_title(paper_title)
+        if index_paper_title not in self.paper_table.index:
+            print(f'{paper_title} does not exist in paper table.')
+            return
+        self.paper_table.loc[get_index_paper_title(paper_title), column_name] = value
 
     def load_dblp(self, dp: DBLParser):
+        """
+        :return: 初始化paper_table，其中contribution与jcr_key列无法填充
+        """
+        __dblp_journal_start_pattern = '<journal>'
+        __dblp_conference_start_pattern = '<crossref>'
+
         def get_venue_name(kind: str) -> str:
             result = ''
-            if kind.startswith(self.__dblp_journal_start_pattern):
+            if kind.startswith(__dblp_journal_start_pattern):
                 # result = kind[len(self.__dblp_journal_start_pattern):].split('<')[0]
                 pass  # 不再需要期刊的名字
-            elif kind.startswith(self.__dblp_conference_start_pattern):
-                result = kind[len(self.__dblp_conference_start_pattern):].split('<')[0].split('/')[1]
+            elif kind.startswith(__dblp_conference_start_pattern):
+                result = kind[len(__dblp_conference_start_pattern):].split('<')[0].split('/')[1]
             else:
                 pass
             return result
 
         contribution = Contribution.UNKNOWN.name
-        author_name = dp.author_name
-        xls_path = ''
         jcr_key = ''
         for row in dp.data.itertuples():
             paper_title = row[3]
-            index_paper_title = get_index_paper_title(paper_title)
-            self.data.loc[index_paper_title] = [paper_title, contribution, author_name, xls_path]
+            pub_year = row[4]
             ccf_key = get_venue_name(row[5])
-            self.ccf_rank.loc[index_paper_title] = [ccf_key]
-            self.jcr_rank.loc[index_paper_title] = [jcr_key]
+            self.add_paper(paper_title, pub_year, contribution, ccf_key, jcr_key)
 
     def load_wos(self, xp: XLSParser):
+        """
+        :return: 在DBLP的基础上完善contribution与jcr_key
+        """
         def get_corresponding_author(reprint_addresses: str) -> str:
             ra = reprint_addresses.split('(corresponding author)')
             if len(ra) == 1:
@@ -69,7 +91,7 @@ class Achievement:
             xls_data = pd.read_excel(xp.xls_dir + '/' + xls)
             xls_title = xls_data['Article Title'][0]
             index_paper_title = get_index_paper_title(xls_title)
-            if index_paper_title not in self.data.index:
+            if index_paper_title not in self.paper_table.index:
                 print("未找到dblp数据，请检查web of science论文题目与dblp论文题目是否一致")
             else:
                 dblp_fn, dblp_ln = xp.dblp_author_name.split(' ')  # ('Baopeng', 'Zhang')
@@ -87,16 +109,15 @@ class Achievement:
                 short_name = xls_data['Authors'][0].replace(' ', '').split(';')[author_index]  # 'Zhang,BP'
                 xls_corresponding_author = get_corresponding_author(xls_data['Reprint Addresses'][0])
 
-                current_contribution = self.data.loc[index_paper_title, 'contribution']
+                current_contribution = self.paper_table.loc[index_paper_title, 'contribution']
                 if author_index == 0 and current_contribution == Contribution.UNKNOWN.name:
                     c = Contribution.FIRST_AUTHOR.name
-                    self.data.loc[index_paper_title, 'contribution'] = c
+                    self.set_column_value(xls_title, 'contribution', c)
                 elif short_name == xls_corresponding_author and current_contribution == Contribution.UNKNOWN.name:
                     c = Contribution.CORRESPONDING_AUTHOR.name
-                    self.data.loc[index_paper_title, 'contribution'] = c
-                self.data.loc[index_paper_title, 'xls_path'] = xp.xls_dir + '/' + xls
+                    self.set_column_value(xls_title, 'contribution', c)
 
-                self.jcr_rank.loc[index_paper_title] = [xls_data['Source Title'][0]]
+                self.set_column_value(xls_title, 'jcr_key', xls_data['Source Title'][0])
 
     def get_rank_json(self):
         """
@@ -105,10 +126,10 @@ class Achievement:
         (2)会议：JCR没有信息，只从CCF表提取，使用ccf_key
         """
 
-        def get_ccf_rank_dict(ccf_key_: str, year: str = '2019') -> dict:
+        def get_ccf_rank_dict(ccf_key_: str, year: str) -> dict:
             """
+            :param year 年份
             :param ccf_key_可能有两种情况：
-            :param year 年份，2015或2019
 
             (1)会议：DBLP文件里提取的简称，需要与ccf.csv的“DBLP简称”或“CCF简称”列对应
 
@@ -116,6 +137,10 @@ class Achievement:
 
             由于无法区分两种情况的值，所以依次搜索两列，凡可得到结果的情况就作为结果
             """
+            if int(year) >= 2019:
+                year = '2019'
+            else:
+                year = '2015'
             ccf_data = pd.read_csv(f'ccf_{year}.csv', header=0, index_col=[0])
             ccf_data.fillna('', inplace=True)
 
@@ -134,8 +159,7 @@ class Achievement:
             if target_row.empty:
                 target_row = ccf_data.loc[ccf_data['CCF简称'] == ccf_key_.upper()]
                 if target_row.empty:
-                    print(f"无法在CCF表中查到该文献的发表刊物: {ccf_key_}")
-                    return {}
+                    return {'ERROR': f"无法在CCF表中查到该文献的发表刊物: {ccf_key_}"}
 
             ccf_rank_dict = {
                 'CCF Abbr': target_row['CCF简称'][0],
@@ -145,12 +169,16 @@ class Achievement:
             }
             return ccf_rank_dict
 
-        def get_jcr_rank_dict(jcr_key_: str, year: str = '2019') -> dict:
+        def get_jcr_rank_dict(jcr_key_: str, year: str) -> dict:
             """
             :param jcr_key_只有一种情况：期刊。直接查表即可
             :param year 年份，'2015'-'2020'之间的值
             """
-            jcr_rank_dict = {}
+            if int(year) >= 2020:
+                year = '2020'
+            elif int(year) < 2015:
+                year = '2015'
+            jcr_rank_dict = {'ERROR': f"无法在JCR表中查到该文献的发表刊物: {jcr_key_}"}
             if not pd.isna(jcr_key_):
                 jcr = json.load(open(f'jcr_{year}.json'))
                 jcr = CIMultiDict(jcr)
@@ -159,31 +187,29 @@ class Achievement:
             return jcr_rank_dict
 
         result = {}
-        if not self.data.empty:
-            result['Author Name'] = self.data['dblp_author_name'][0]
-            result['Achievements'] = []
-            for row in self.data.itertuples():
-                ac = {
-                    'Paper Title': row[1],
-                    'Contribution': row[2],
-                    'Venue': '',
-                    'JCR': {},
-                    'CCF': {}
-                }
-                jcr_key = self.jcr_rank.loc[row[0]]['jcr_key']
-                if jcr_key:  # 先查一下JCR信息。对于Web of Science收录的期刊论文，应当一直进入本if判断语句
-                    ac['JCR'] = get_jcr_rank_dict(jcr_key)
-                    ac['Venue'] = {'Journal': jcr_key}
-                    ac['CCF'] = get_ccf_rank_dict(get_index_paper_title(jcr_key))
-                if not ac['JCR']:  # JCR没有有用的信息。既有可能是会议论文，jcr_key为空；又有可能是上述jcr_key查表过程没有有用信息
-                    ccf_key = self.ccf_rank.loc[row[0]]['ccf_key']
-                    ac['Venue'] = {'Conference': ccf_key}
-                    ac['CCF'] = get_ccf_rank_dict(ccf_key)
-                result['Achievements'].append(ac)
+        result['Author Name'] = self.author_name
+        result['Achievements'] = []
+        for row in self.paper_table.itertuples():
+            ac = {
+                'Paper Title': row[1],
+                'Contribution': row[3],
+                'Venue': '',
+                'JCR': {},
+                'CCF': {}
+            }
+            jcr_key = row[5]
+            pub_year = row[2]
+            if jcr_key:  # 先查一下JCR信息。对于Web of Science收录的期刊论文，应当一直进入本if判断语句
+                ac['JCR'] = get_jcr_rank_dict(jcr_key, pub_year)
+                ac['Venue'] = {'Journal': jcr_key}
+                ac['CCF'] = get_ccf_rank_dict(get_index_paper_title(jcr_key), pub_year)
+            if not ac['JCR']:  # JCR没有有用的信息。既有可能是会议论文，jcr_key为空；又有可能是上述jcr_key查表过程没有有用信息
+                ccf_key = row[4]
+                ac['Venue'] = {'Conference': ccf_key}
+                ac['CCF'] = get_ccf_rank_dict(ccf_key, pub_year)
+            result['Achievements'].append(ac)
 
         return result
 
     def save_csv(self, output_dir: str):
-        self.data.to_csv(output_dir + '/_achievement.csv')
-        self.ccf_rank.to_csv(output_dir + '/_ccf.csv')
-        self.jcr_rank.to_csv(output_dir + '/_jcr.csv')
+        self.paper_table.to_csv(output_dir + '/_achievement.csv')

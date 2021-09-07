@@ -10,6 +10,7 @@ import pandas as pd
 import scrapy
 from bs4 import BeautifulSoup
 from scrapy.http import FormRequest
+import logging
 
 
 class AdvancedQuerySpider(scrapy.Spider):
@@ -56,8 +57,16 @@ class AdvancedQuerySpider(scrapy.Spider):
         self.qid_list = []
         self.file_postfix_dict = {'fieldtagged': 'txt', 'saveToExcel': 'xls'}
 
+        logger = logging.getLogger(__name__)
+        logger.setLevel(level=logging.INFO)
+        handler = logging.FileHandler(self.error_log_path + "wos_log.txt")
+        handler.setLevel(logging.INFO)
+        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        handler.setFormatter(formatter)
+        logger.addHandler(handler)
+
         if not query_path:
-            print('请指定检索式文件路径')
+            logging.error(f'{query_path}为空')
             sys.exit(-1)
 
         with open(query_path) as query_file:
@@ -65,20 +74,17 @@ class AdvancedQuerySpider(scrapy.Spider):
                 (map(lambda line: 'TI=(' + line.strip('\n').strip('.') + ')', query_file.readlines())))
 
         if self.output_path_prefix is None:
-            print('请指定有效的输出路径')
+            logging.error(f'{self.output_path_prefix}路径不正确')
             sys.exit(-1)
-
-    def init_error_log(self):
-        open(self.error_log_path, 'w').close()  # 清空错误日志文件
 
     def parse(self, response, **kwargs):
         pattern = re.compile(self.sid_pattern)
         result = re.search(pattern, response.url)
         if result is not None:
             self.sid = result.group(1)
-            print('提取得到SID：', self.sid)
+            logging.info('提取得到SID：', self.sid)
         else:
-            print('SID提取失败')
+            logging.error('SID提取失败')
             self.sid = None
             exit(-1)
 
@@ -129,7 +135,7 @@ class AdvancedQuerySpider(scrapy.Spider):
         entry = soup.find('a', attrs={'title': 'Click to view the results'})
 
         if not entry:
-            self.write_error_log(f"No entry. Please check {query}.")
+            logging.error(f"No entry. Please check {query}.")
             return
         entry_url = 'https://apps.webofknowledge.com' + entry.get('href')
 
@@ -138,14 +144,14 @@ class AdvancedQuerySpider(scrapy.Spider):
         result = re.search(pattern, entry_url)
         if result is not None:
             qid = result.group(1)
-            print('提取得到qid：', qid)
+            logging.info('提取得到qid：', qid)
             if qid in self.qid_list:
-                self.write_error_log(f"Duplicate qid. Probably because the query '{query}' got nothing.")
+                logging.error(f"Duplicate qid. Probably because the query '{query}' got nothing.")
                 return
             self.qid_list.append(qid)
         else:
             qid = None
-            print('qid提取失败')
+            logging.error('qid提取失败')
             exit(-1)
 
         # 爬第一篇
@@ -224,7 +230,7 @@ class AdvancedQuerySpider(scrapy.Spider):
                 with open(filename, 'w', encoding='utf-8') as file:
                     file.write(response.text)
             else:
-                self.write_error_log(f"Title not compatible: Expect '{expect_title}', but got '{got_title}'.")
+                logging.error(f"Title not compatible: Expect '{expect_title}', but got '{got_title}'.")
 
         elif file_postfix == 'xls':
             xls_df = pd.read_excel(response.body)
@@ -236,9 +242,4 @@ class AdvancedQuerySpider(scrapy.Spider):
                 with open(filename, 'wb+') as xls_file:
                     xls_file.write(response.body)
             else:
-                self.write_error_log(f"Title not compatible: Expect '{expect_title}', but got '{got_title}'.")
-
-    def write_error_log(self, text: str):
-        with open(self.error_log_path, 'a') as error_log:
-            error_log.write(self.timestamp + ': ')
-            error_log.write(text + '\n')
+                logging.error(f"Title not compatible: Expect '{expect_title}', but got '{got_title}'.")
