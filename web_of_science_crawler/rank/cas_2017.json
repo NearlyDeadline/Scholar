@@ -1,0 +1,2701 @@
+{
+    "COMPUTER SCIENCE, ARTIFICIAL INTELLIGENCE": {
+        "Journal Impact Factor": 11.541,
+        "Field Rank": [
+            {
+                "Field Name": "INTERNATIONAL JOURNAL OF COMPUTER VISION",
+                "Rank": 1
+            },
+            {
+                "Field Name": "IEEE TRANSACTIONS ON PATTERN ANALYSIS AND MACHINE INTELLIGENCE",
+                "Rank": 1
+            },
+            {
+                "Field Name": "IEEE Transactions on Cybernetics",
+                "Rank": 1
+            },
+            {
+                "Field Name": "IEEE TRANSACTIONS ON FUZZY SYSTEMS",
+                "Rank": 1
+            },
+            {
+                "Field Name": "IEEE TRANSACTIONS ON EVOLUTIONARY COMPUTATION",
+                "Rank": 1
+            },
+            {
+                "Field Name": "IEEE Transactions on Neural Networks and Learning Systems",
+                "Rank": 1
+            },
+            {
+                "Field Name": "NEURAL NETWORKS",
+                "Rank": 2
+            },
+            {
+                "Field Name": "Information Fusion",
+                "Rank": 2
+            },
+            {
+                "Field Name": "IEEE Computational Intelligence Magazine",
+                "Rank": 2
+            },
+            {
+                "Field Name": "MEDICAL IMAGE ANALYSIS",
+                "Rank": 2
+            },
+            {
+                "Field Name": "IEEE TRANSACTIONS ON IMAGE PROCESSING",
+                "Rank": 2
+            },
+            {
+                "Field Name": "IEEE Transactions on Affective Computing",
+                "Rank": 2
+            },
+            {
+                "Field Name": "International Journal of Neural Systems",
+                "Rank": 2
+            },
+            {
+                "Field Name": "KNOWLEDGE-BASED SYSTEMS",
+                "Rank": 2
+            },
+            {
+                "Field Name": "NEURAL COMPUTING & APPLICATIONS",
+                "Rank": 2
+            },
+            {
+                "Field Name": "PATTERN RECOGNITION",
+                "Rank": 2
+            },
+            {
+                "Field Name": "APPLIED SOFT COMPUTING",
+                "Rank": 2
+            },
+            {
+                "Field Name": "Swarm and Evolutionary Computation",
+                "Rank": 2
+            },
+            {
+                "Field Name": "ARTIFICIAL INTELLIGENCE REVIEW",
+                "Rank": 2
+            },
+            {
+                "Field Name": "EXPERT SYSTEMS WITH APPLICATIONS",
+                "Rank": 2
+            },
+            {
+                "Field Name": "INTEGRATED COMPUTER-AIDED ENGINEERING",
+                "Rank": 2
+            },
+            {
+                "Field Name": "JOURNAL OF INTELLIGENT MANUFACTURING",
+                "Rank": 2
+            },
+            {
+                "Field Name": "DECISION SUPPORT SYSTEMS",
+                "Rank": 2
+            },
+            {
+                "Field Name": "Cognitive Computation",
+                "Rank": 2
+            },
+            {
+                "Field Name": "INTERNATIONAL JOURNAL OF INTELLIGENT SYSTEMS",
+                "Rank": 2
+            },
+            {
+                "Field Name": "ADVANCED ENGINEERING INFORMATICS",
+                "Rank": 2
+            },
+            {
+                "Field Name": "NEUROCOMPUTING",
+                "Rank": 3
+            },
+            {
+                "Field Name": "ARTIFICIAL INTELLIGENCE",
+                "Rank": 3
+            },
+            {
+                "Field Name": "ACM Transactions on Intelligent Systems and Technology",
+                "Rank": 3
+            },
+            {
+                "Field Name": "IEEE Transactions on Autonomous Mental Development",
+                "Rank": 3
+            },
+            {
+                "Field Name": "ARTIFICIAL INTELLIGENCE IN MEDICINE",
+                "Rank": 3
+            },
+            {
+                "Field Name": "ENGINEERING APPLICATIONS OF ARTIFICIAL INTELLIGENCE",
+                "Rank": 3
+            },
+            {
+                "Field Name": "IEEE TRANSACTIONS ON KNOWLEDGE AND DATA ENGINEERING",
+                "Rank": 3
+            },
+            {
+                "Field Name": "CHEMOMETRICS AND INTELLIGENT LABORATORY SYSTEMS",
+                "Rank": 3
+            },
+            {
+                "Field Name": "International Journal of Machine Learning and Cybernetics",
+                "Rank": 3
+            },
+            {
+                "Field Name": "ROBOTICS AND AUTONOMOUS SYSTEMS",
+                "Rank": 3
+            },
+            {
+                "Field Name": "Frontiers in Neurorobotics",
+                "Rank": 3
+            },
+            {
+                "Field Name": "IEEE INTELLIGENT SYSTEMS",
+                "Rank": 3
+            },
+            {
+                "Field Name": "IEEE Transactions on Human-Machine Systems",
+                "Rank": 3
+            },
+            {
+                "Field Name": "DATA MINING AND KNOWLEDGE DISCOVERY",
+                "Rank": 3
+            },
+            {
+                "Field Name": "MECHATRONICS",
+                "Rank": 3
+            },
+            {
+                "Field Name": "International Journal of Fuzzy Systems",
+                "Rank": 3
+            },
+            {
+                "Field Name": "COMPUTER VISION AND IMAGE UNDERSTANDING",
+                "Rank": 3
+            },
+            {
+                "Field Name": "EVOLUTIONARY COMPUTATION",
+                "Rank": 3
+            },
+            {
+                "Field Name": "SOFT COMPUTING",
+                "Rank": 3
+            },
+            {
+                "Field Name": "SIAM Journal on Imaging Sciences",
+                "Rank": 3
+            },
+            {
+                "Field Name": "JOURNAL OF MACHINE LEARNING RESEARCH",
+                "Rank": 3
+            },
+            {
+                "Field Name": "International Journal of Bio-Inspired Computation",
+                "Rank": 3
+            },
+            {
+                "Field Name": "KNOWLEDGE AND INFORMATION SYSTEMS",
+                "Rank": 3
+            },
+            {
+                "Field Name": "AUTONOMOUS ROBOTS",
+                "Rank": 3
+            },
+            {
+                "Field Name": "Semantic Web",
+                "Rank": 3
+            },
+            {
+                "Field Name": "IMAGE AND VISION COMPUTING",
+                "Rank": 3
+            },
+            {
+                "Field Name": "Fuzzy Optimization and Decision Making",
+                "Rank": 3
+            },
+            {
+                "Field Name": "International Journal of Computational Intelligence Systems",
+                "Rank": 3
+            },
+            {
+                "Field Name": "APPLIED INTELLIGENCE",
+                "Rank": 3
+            },
+            {
+                "Field Name": "IEEE Transactions on Cognitive and Developmental Systems",
+                "Rank": 3
+            },
+            {
+                "Field Name": "PATTERN RECOGNITION LETTERS",
+                "Rank": 3
+            },
+            {
+                "Field Name": "Wiley Interdisciplinary Reviews-Data Mining and Knowledge Discovery",
+                "Rank": 3
+            },
+            {
+                "Field Name": "JOURNAL OF MATHEMATICAL IMAGING AND VISION",
+                "Rank": 3
+            },
+            {
+                "Field Name": "Memetic Computing",
+                "Rank": 3
+            },
+            {
+                "Field Name": "MACHINE LEARNING",
+                "Rank": 3
+            },
+            {
+                "Field Name": "IET Biometrics",
+                "Rank": 3
+            },
+            {
+                "Field Name": "NEURAL PROCESSING LETTERS",
+                "Rank": 3
+            },
+            {
+                "Field Name": "COMPUTER SPEECH AND LANGUAGE",
+                "Rank": 3
+            },
+            {
+                "Field Name": "INTERNATIONAL JOURNAL OF APPROXIMATE REASONING",
+                "Rank": 3
+            },
+            {
+                "Field Name": "INTERNATIONAL JOURNAL OF INFORMATION TECHNOLOGY & DECISION MAKING",
+                "Rank": 3
+            },
+            {
+                "Field Name": "International Journal of Applied Mathematics and Computer Science",
+                "Rank": 4
+            },
+            {
+                "Field Name": "NEURAL COMPUTATION",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF INTELLIGENT & ROBOTIC SYSTEMS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Journal of Real-Time Image Processing",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Swarm Intelligence",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF CHEMOMETRICS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "DATA & KNOWLEDGE ENGINEERING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Genetic Programming and Evolvable Machines",
+                "Rank": 4
+            },
+            {
+                "Field Name": "EXPERT SYSTEMS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF INTELLIGENT & FUZZY SYSTEMS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Cognitive Systems Research",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Journal of Ambient Intelligence and Humanized Computing",
+                "Rank": 4
+            },
+            {
+                "Field Name": "IET Image Processing",
+                "Rank": 4
+            },
+            {
+                "Field Name": "COMPUTATIONAL INTELLIGENCE",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Journal of Web Semantics",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF AUTOMATED REASONING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "COMPUTATIONAL LINGUISTICS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "MACHINE VISION AND APPLICATIONS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "International Journal on Document Analysis and Recognition",
+                "Rank": 4
+            },
+            {
+                "Field Name": "PATTERN ANALYSIS AND APPLICATIONS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF ARTIFICIAL INTELLIGENCE RESEARCH",
+                "Rank": 4
+            },
+            {
+                "Field Name": "ACM Transactions on Autonomous and Adaptive Systems",
+                "Rank": 4
+            },
+            {
+                "Field Name": "AUTONOMOUS AGENTS AND MULTI-AGENT SYSTEMS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "INTERNATIONAL JOURNAL OF UNCERTAINTY FUZZINESS AND KNOWLEDGE-BASED SYSTEMS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Journal on Multimodal User Interfaces",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF HEURISTICS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF INTELLIGENT INFORMATION SYSTEMS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "IET Computer Vision",
+                "Rank": 4
+            },
+            {
+                "Field Name": "KNOWLEDGE ENGINEERING REVIEW",
+                "Rank": 4
+            },
+            {
+                "Field Name": "AI EDAM-ARTIFICIAL INTELLIGENCE FOR ENGINEERING DESIGN ANALYSIS AND MANUFACTURING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "AI MAGAZINE",
+                "Rank": 4
+            },
+            {
+                "Field Name": "INTERNATIONAL JOURNAL OF PATTERN RECOGNITION AND ARTIFICIAL INTELLIGENCE",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF EXPERIMENTAL & THEORETICAL ARTIFICIAL INTELLIGENCE",
+                "Rank": 4
+            },
+            {
+                "Field Name": "ADAPTIVE BEHAVIOR",
+                "Rank": 4
+            },
+            {
+                "Field Name": "CONNECTION SCIENCE",
+                "Rank": 4
+            },
+            {
+                "Field Name": "ANNALS OF MATHEMATICS AND ARTIFICIAL INTELLIGENCE",
+                "Rank": 4
+            },
+            {
+                "Field Name": "ARTIFICIAL LIFE",
+                "Rank": 4
+            },
+            {
+                "Field Name": "IEEE Transactions on Computational Intelligence and AI in Games",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Journal of Ambient Intelligence and Smart Environments",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Statistical Analysis and Data Mining",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Natural Computing",
+                "Rank": 4
+            },
+            {
+                "Field Name": "MINDS AND MACHINES",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Information Technology and Control",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Natural Language Engineering",
+                "Rank": 4
+            },
+            {
+                "Field Name": "International Journal on Semantic Web and Information Systems",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Biologically Inspired Cognitive Architectures",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Applied Ontology",
+                "Rank": 4
+            },
+            {
+                "Field Name": "NETWORK-COMPUTATION IN NEURAL SYSTEMS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Advances in Electrical and Computer Engineering",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Intelligent Data Analysis",
+                "Rank": 4
+            },
+            {
+                "Field Name": "CONSTRAINTS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "INTELLIGENT AUTOMATION AND SOFT COMPUTING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Malaysian Journal of Computer Science",
+                "Rank": 4
+            },
+            {
+                "Field Name": "APPLIED ARTIFICIAL INTELLIGENCE",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Turkish Journal of Electrical Engineering and Computer Sciences",
+                "Rank": 4
+            },
+            {
+                "Field Name": "International Journal on Artificial Intelligence Tools",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF COMPUTER AND SYSTEMS SCIENCES INTERNATIONAL",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Journal of Logic Language and Information",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Neural Network World",
+                "Rank": 4
+            },
+            {
+                "Field Name": "International Arab Journal of Information Technology",
+                "Rank": 4
+            },
+            {
+                "Field Name": "AI COMMUNICATIONS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF MULTIPLE-VALUED LOGIC AND SOFT COMPUTING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "COMPUTING AND INFORMATICS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "INTERNATIONAL JOURNAL OF SOFTWARE ENGINEERING AND KNOWLEDGE ENGINEERING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "ACM Transactions on Asian and Low-Resource Language Information Processing",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Traitement du Signal",
+                "Rank": 4
+            }
+        ]
+    },
+    "COMPUTER SCIENCE, CYBERNETICS": {
+        "Journal Impact Factor": 8.803,
+        "Field Rank": [
+            {
+                "Field Name": "IEEE Transactions on Cybernetics",
+                "Rank": 1
+            },
+            {
+                "Field Name": "IEEE Transactions on Systems Man Cybernetics-Systems",
+                "Rank": 2
+            },
+            {
+                "Field Name": "IEEE Transactions on Affective Computing",
+                "Rank": 2
+            },
+            {
+                "Field Name": "HUMAN-COMPUTER INTERACTION",
+                "Rank": 2
+            },
+            {
+                "Field Name": "USER MODELING AND USER-ADAPTED INTERACTION",
+                "Rank": 3
+            },
+            {
+                "Field Name": "IEEE Transactions on Human-Machine Systems",
+                "Rank": 3
+            },
+            {
+                "Field Name": "INTERNATIONAL JOURNAL OF HUMAN-COMPUTER STUDIES",
+                "Rank": 3
+            },
+            {
+                "Field Name": "IEEE Transactions on Haptics",
+                "Rank": 3
+            },
+            {
+                "Field Name": "BIOLOGICAL CYBERNETICS",
+                "Rank": 3
+            },
+            {
+                "Field Name": "BEHAVIOUR & INFORMATION TECHNOLOGY",
+                "Rank": 3
+            },
+            {
+                "Field Name": "MACHINE VISION AND APPLICATIONS",
+                "Rank": 3
+            },
+            {
+                "Field Name": "INTERNATIONAL JOURNAL OF HUMAN-COMPUTER INTERACTION",
+                "Rank": 4
+            },
+            {
+                "Field Name": "CYBERNETICS AND SYSTEMS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Universal Access in the Information Society",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Journal on Multimodal User Interfaces",
+                "Rank": 4
+            },
+            {
+                "Field Name": "KYBERNETES",
+                "Rank": 4
+            },
+            {
+                "Field Name": "ACM Transactions on Computer-Human Interaction",
+                "Rank": 4
+            },
+            {
+                "Field Name": "INTERACTING WITH COMPUTERS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "MODELING IDENTIFICATION AND CONTROL",
+                "Rank": 4
+            },
+            {
+                "Field Name": "KYBERNETIKA",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF COMPUTER AND SYSTEMS SCIENCES INTERNATIONAL",
+                "Rank": 4
+            },
+            {
+                "Field Name": "PRESENCE-TELEOPERATORS AND VIRTUAL ENVIRONMENTS",
+                "Rank": 4
+            }
+        ]
+    },
+    "COMPUTER SCIENCE, HARDWARE & ARCHITECTURE": {
+        "Journal Impact Factor": 9.202,
+        "Field Rank": [
+            {
+                "Field Name": "IEEE WIRELESS COMMUNICATIONS",
+                "Rank": 1
+            },
+            {
+                "Field Name": "IEEE Transactions on Neural Networks and Learning Systems",
+                "Rank": 1
+            },
+            {
+                "Field Name": "IEEE NETWORK",
+                "Rank": 2
+            },
+            {
+                "Field Name": "IEEE Transactions on Dependable and Secure Computing",
+                "Rank": 2
+            },
+            {
+                "Field Name": "JOURNAL OF NETWORK AND COMPUTER APPLICATIONS",
+                "Rank": 2
+            },
+            {
+                "Field Name": "IEEE-ACM TRANSACTIONS ON NETWORKING",
+                "Rank": 2
+            },
+            {
+                "Field Name": "COMMUNICATIONS OF THE ACM",
+                "Rank": 2
+            },
+            {
+                "Field Name": "IEEE TRANSACTIONS ON COMPUTERS",
+                "Rank": 2
+            },
+            {
+                "Field Name": "Journal of Optical Communications and Networking",
+                "Rank": 2
+            },
+            {
+                "Field Name": "IEEE TRANSACTIONS ON RELIABILITY",
+                "Rank": 2
+            },
+            {
+                "Field Name": "VLDB JOURNAL",
+                "Rank": 3
+            },
+            {
+                "Field Name": "Computer Networks",
+                "Rank": 3
+            },
+            {
+                "Field Name": "MOBILE NETWORKS & APPLICATIONS",
+                "Rank": 3
+            },
+            {
+                "Field Name": "IEEE TRANSACTIONS ON COMPUTER-AIDED DESIGN OF INTEGRATED CIRCUITS AND SYSTEMS",
+                "Rank": 3
+            },
+            {
+                "Field Name": "INTERNATIONAL JOURNAL OF HIGH PERFORMANCE COMPUTING APPLICATIONS",
+                "Rank": 3
+            },
+            {
+                "Field Name": "COMPUTER",
+                "Rank": 3
+            },
+            {
+                "Field Name": "IEEE MICRO",
+                "Rank": 3
+            },
+            {
+                "Field Name": "IEEE MULTIMEDIA",
+                "Rank": 3
+            },
+            {
+                "Field Name": "PERFORMANCE EVALUATION",
+                "Rank": 3
+            },
+            {
+                "Field Name": "COMPUTERS & ELECTRICAL ENGINEERING",
+                "Rank": 3
+            },
+            {
+                "Field Name": "IEEE TRANSACTIONS ON VERY LARGE SCALE INTEGRATION (VLSI) SYSTEMS",
+                "Rank": 3
+            },
+            {
+                "Field Name": "JOURNAL OF THE ACM",
+                "Rank": 3
+            },
+            {
+                "Field Name": "ACM Journal on Emerging Technologies in Computing Systems",
+                "Rank": 3
+            },
+            {
+                "Field Name": "IEEE Design & Test",
+                "Rank": 3
+            },
+            {
+                "Field Name": "JOURNAL OF SUPERCOMPUTING",
+                "Rank": 3
+            },
+            {
+                "Field Name": "IEEE Computer Architecture Letters",
+                "Rank": 3
+            },
+            {
+                "Field Name": "Advances in Computers",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF COMPUTER AND SYSTEM SCIENCES",
+                "Rank": 4
+            },
+            {
+                "Field Name": "COMPUTER STANDARDS & INTERFACES",
+                "Rank": 4
+            },
+            {
+                "Field Name": "IEEE Consumer Electronics Magazine",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Sustainable Computing-Informatics & Systems",
+                "Rank": 4
+            },
+            {
+                "Field Name": "DISPLAYS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "ACM Transactions on Embedded Computing Systems",
+                "Rank": 4
+            },
+            {
+                "Field Name": "ACM Transactions on Architecture and Code Optimization",
+                "Rank": 4
+            },
+            {
+                "Field Name": "NETWORKS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "MICROPROCESSORS AND MICROSYSTEMS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "ACM Transactions on Reconfigurable Technology and Systems",
+                "Rank": 4
+            },
+            {
+                "Field Name": "CANADIAN JOURNAL OF ELECTRICAL AND COMPUTER ENGINEERING-REVUE CANADIENNE DE GENIE ELECTRIQUE ET INFORMATIQUE",
+                "Rank": 4
+            },
+            {
+                "Field Name": "IBM JOURNAL OF RESEARCH AND DEVELOPMENT",
+                "Rank": 4
+            },
+            {
+                "Field Name": "ACM Transactions on Storage",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF SYSTEMS ARCHITECTURE",
+                "Rank": 4
+            },
+            {
+                "Field Name": "INTEGRATION-THE VLSI JOURNAL",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF COMPUTER SCIENCE AND TECHNOLOGY",
+                "Rank": 4
+            },
+            {
+                "Field Name": "ACM TRANSACTIONS ON DESIGN AUTOMATION OF ELECTRONIC SYSTEMS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "COMPUTER SYSTEMS SCIENCE AND ENGINEERING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "ANALOG INTEGRATED CIRCUITS AND SIGNAL PROCESSING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "COMPUTER JOURNAL",
+                "Rank": 4
+            },
+            {
+                "Field Name": "NEW GENERATION COMPUTING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "IET Computers and Digital Techniques",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF CIRCUITS SYSTEMS AND COMPUTERS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "DESIGN AUTOMATION FOR EMBEDDED SYSTEMS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "IEICE TRANSACTIONS ON FUNDAMENTALS OF ELECTRONICS COMMUNICATIONS AND COMPUTER SCIENCES",
+                "Rank": 4
+            }
+        ]
+    },
+    "COMPUTER SCIENCE, INFORMATION SYSTEMS": {
+        "Journal Impact Factor": 20.23,
+        "Field Rank": [
+            {
+                "Field Name": "IEEE Communications Surveys and Tutorials",
+                "Rank": 1
+            },
+            {
+                "Field Name": "IEEE WIRELESS COMMUNICATIONS",
+                "Rank": 1
+            },
+            {
+                "Field Name": "IEEE Transactions on Cloud Computing",
+                "Rank": 1
+            },
+            {
+                "Field Name": "IEEE NETWORK",
+                "Rank": 1
+            },
+            {
+                "Field Name": "IEEE Internet of Things Journal",
+                "Rank": 1
+            },
+            {
+                "Field Name": "MIS QUARTERLY",
+                "Rank": 1
+            },
+            {
+                "Field Name": "JOURNAL OF INFORMATION TECHNOLOGY",
+                "Rank": 1
+            },
+            {
+                "Field Name": "IEEE Transactions on Services Computing",
+                "Rank": 2
+            },
+            {
+                "Field Name": "IEEE Transactions on Dependable and Secure Computing",
+                "Rank": 2
+            },
+            {
+                "Field Name": "IEEE Systems Journal",
+                "Rank": 2
+            },
+            {
+                "Field Name": "JOURNAL OF STRATEGIC INFORMATION SYSTEMS",
+                "Rank": 2
+            },
+            {
+                "Field Name": "INFORMATION SCIENCES",
+                "Rank": 2
+            },
+            {
+                "Field Name": "JOURNAL OF THE AMERICAN MEDICAL INFORMATICS ASSOCIATION",
+                "Rank": 2
+            },
+            {
+                "Field Name": "IEEE TRANSACTIONS ON MOBILE COMPUTING",
+                "Rank": 2
+            },
+            {
+                "Field Name": "IEEE TRANSACTIONS ON MULTIMEDIA",
+                "Rank": 2
+            },
+            {
+                "Field Name": "Journal of Cheminformatics",
+                "Rank": 2
+            },
+            {
+                "Field Name": "INFORMATION & MANAGEMENT",
+                "Rank": 2
+            },
+            {
+                "Field Name": "IEEE Journal of Biomedical and Health Informatics",
+                "Rank": 2
+            },
+            {
+                "Field Name": "Internet Research",
+                "Rank": 2
+            },
+            {
+                "Field Name": "Journal of Chemical Information and Modeling",
+                "Rank": 2
+            },
+            {
+                "Field Name": "IEEE Transactions on Emerging Topics in Computing",
+                "Rank": 2
+            },
+            {
+                "Field Name": "ACM SIGCOMM Computer Communication Review",
+                "Rank": 2
+            },
+            {
+                "Field Name": "DECISION SUPPORT SYSTEMS",
+                "Rank": 2
+            },
+            {
+                "Field Name": "IEEE Access",
+                "Rank": 2
+            },
+            {
+                "Field Name": "INFORMATION PROCESSING & MANAGEMENT",
+                "Rank": 2
+            },
+            {
+                "Field Name": "IEEE Transactions on Network and Service Management",
+                "Rank": 2
+            },
+            {
+                "Field Name": "INFORMATION SYSTEMS FRONTIERS",
+                "Rank": 2
+            },
+            {
+                "Field Name": "EUROPEAN JOURNAL OF INFORMATION SYSTEMS",
+                "Rank": 2
+            },
+            {
+                "Field Name": "Ad Hoc Networks",
+                "Rank": 2
+            },
+            {
+                "Field Name": "Foundations and Trends in Information Retrieval",
+                "Rank": 3
+            },
+            {
+                "Field Name": "IEEE Wireless Communications Letters",
+                "Rank": 3
+            },
+            {
+                "Field Name": "IEEE PERVASIVE COMPUTING",
+                "Rank": 3
+            },
+            {
+                "Field Name": "Pervasive and Mobile Computing",
+                "Rank": 3
+            },
+            {
+                "Field Name": "ACM Transactions on Intelligent Systems and Technology",
+                "Rank": 3
+            },
+            {
+                "Field Name": "INTERNATIONAL JOURNAL OF MEDICAL INFORMATICS",
+                "Rank": 3
+            },
+            {
+                "Field Name": "IEEE Cloud Computing",
+                "Rank": 3
+            },
+            {
+                "Field Name": "Journal of the Association for Information Systems",
+                "Rank": 3
+            },
+            {
+                "Field Name": "Journal of the Association for Information Science and Technology",
+                "Rank": 3
+            },
+            {
+                "Field Name": "Journal of Grid Computing",
+                "Rank": 3
+            },
+            {
+                "Field Name": "IEEE TRANSACTIONS ON KNOWLEDGE AND DATA ENGINEERING",
+                "Rank": 3
+            },
+            {
+                "Field Name": "JOURNAL OF MANAGEMENT INFORMATION SYSTEMS",
+                "Rank": 3
+            },
+            {
+                "Field Name": "Journal of Optical Communications and Networking",
+                "Rank": 3
+            },
+            {
+                "Field Name": "VLDB JOURNAL",
+                "Rank": 3
+            },
+            {
+                "Field Name": "COMPUTERS & SECURITY",
+                "Rank": 3
+            },
+            {
+                "Field Name": "INFORMATION AND SOFTWARE TECHNOLOGY",
+                "Rank": 3
+            },
+            {
+                "Field Name": "COMPUTER COMMUNICATIONS",
+                "Rank": 3
+            },
+            {
+                "Field Name": "Business & Information Systems Engineering",
+                "Rank": 3
+            },
+            {
+                "Field Name": "ACM Transactions on Information and System Security",
+                "Rank": 3
+            },
+            {
+                "Field Name": "Electronic Commerce Research and Applications",
+                "Rank": 3
+            },
+            {
+                "Field Name": "INFORMATION SYSTEMS",
+                "Rank": 3
+            },
+            {
+                "Field Name": "Computer Networks",
+                "Rank": 3
+            },
+            {
+                "Field Name": "MOBILE NETWORKS & APPLICATIONS",
+                "Rank": 3
+            },
+            {
+                "Field Name": "DATA MINING AND KNOWLEDGE DISCOVERY",
+                "Rank": 3
+            },
+            {
+                "Field Name": "INTERNATIONAL JOURNAL OF GEOGRAPHICAL INFORMATION SCIENCE",
+                "Rank": 3
+            },
+            {
+                "Field Name": "ACM Transactions on Sensor Networks",
+                "Rank": 3
+            },
+            {
+                "Field Name": "KNOWLEDGE AND INFORMATION SYSTEMS",
+                "Rank": 3
+            },
+            {
+                "Field Name": "Semantic Web",
+                "Rank": 3
+            },
+            {
+                "Field Name": "Science China-Information Sciences",
+                "Rank": 3
+            },
+            {
+                "Field Name": "IEEE TRANSACTIONS ON INFORMATION THEORY",
+                "Rank": 3
+            },
+            {
+                "Field Name": "International Journal of Critical Infrastructure Protection",
+                "Rank": 3
+            },
+            {
+                "Field Name": "GEOINFORMATICA",
+                "Rank": 3
+            },
+            {
+                "Field Name": "ACM Transactions on Multimedia Computing Communications and Applications",
+                "Rank": 3
+            },
+            {
+                "Field Name": "WIRELESS NETWORKS",
+                "Rank": 3
+            },
+            {
+                "Field Name": "Human-centric Computing and Information Sciences",
+                "Rank": 3
+            },
+            {
+                "Field Name": "JOURNAL OF INFORMATION SCIENCE",
+                "Rank": 3
+            },
+            {
+                "Field Name": "Personal and Ubiquitous Computing",
+                "Rank": 3
+            },
+            {
+                "Field Name": "IEEE MULTIMEDIA",
+                "Rank": 3
+            },
+            {
+                "Field Name": "JOURNAL OF VISUAL COMMUNICATION AND IMAGE REPRESENTATION",
+                "Rank": 3
+            },
+            {
+                "Field Name": "International Journal of Distributed Sensor Networks",
+                "Rank": 3
+            },
+            {
+                "Field Name": "Digital Investigation",
+                "Rank": 3
+            },
+            {
+                "Field Name": "ACM TRANSACTIONS ON INFORMATION SYSTEMS",
+                "Rank": 3
+            },
+            {
+                "Field Name": "INTERNATIONAL JOURNAL OF INFORMATION TECHNOLOGY & DECISION MAKING",
+                "Rank": 3
+            },
+            {
+                "Field Name": "Journal of Network and Systems Management",
+                "Rank": 3
+            },
+            {
+                "Field Name": "REQUIREMENTS ENGINEERING",
+                "Rank": 3
+            },
+            {
+                "Field Name": "JOURNAL OF THE ACM",
+                "Rank": 4
+            },
+            {
+                "Field Name": "ACM Transactions on Internet Technology",
+                "Rank": 4
+            },
+            {
+                "Field Name": "MULTIMEDIA SYSTEMS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Enterprise Information Systems",
+                "Rank": 4
+            },
+            {
+                "Field Name": "ONLINE INFORMATION REVIEW",
+                "Rank": 4
+            },
+            {
+                "Field Name": "International Journal of Information Security",
+                "Rank": 4
+            },
+            {
+                "Field Name": "IT Professional",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Cluster Computing-The Journal of Networks Software Tools and Applications",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF COMPUTER INFORMATION SYSTEMS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "MULTIMEDIA TOOLS AND APPLICATIONS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "METHODS OF INFORMATION IN MEDICINE",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Peer-to-Peer Networking and Applications",
+                "Rank": 4
+            },
+            {
+                "Field Name": "ACM Transactions on Knowledge Discovery from Data",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Information Retrieval Journal",
+                "Rank": 4
+            },
+            {
+                "Field Name": "DATA & KNOWLEDGE ENGINEERING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Aslib Journal of Information Management",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Journal of Ambient Intelligence and Humanized Computing",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF ORGANIZATIONAL COMPUTING AND ELECTRONIC COMMERCE",
+                "Rank": 4
+            },
+            {
+                "Field Name": "INFORMATICA",
+                "Rank": 4
+            },
+            {
+                "Field Name": "TSINGHUA SCIENCE AND TECHNOLOGY",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Journal of Web Semantics",
+                "Rank": 4
+            },
+            {
+                "Field Name": "International Journal of Network Management",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Journal of Internet Technology",
+                "Rank": 4
+            },
+            {
+                "Field Name": "International Journal of Computers Communications & Control",
+                "Rank": 4
+            },
+            {
+                "Field Name": "SIGMOD RECORD",
+                "Rank": 4
+            },
+            {
+                "Field Name": "INFORMATION SYSTEMS MANAGEMENT",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF COMMUNICATIONS AND NETWORKS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "IEEE SECURITY & PRIVACY",
+                "Rank": 4
+            },
+            {
+                "Field Name": "ACM Transactions on Autonomous and Adaptive Systems",
+                "Rank": 4
+            },
+            {
+                "Field Name": "PHOTONIC NETWORK COMMUNICATIONS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Sustainable Computing-Informatics & Systems",
+                "Rank": 4
+            },
+            {
+                "Field Name": "PROGRAM-ELECTRONIC LIBRARY AND INFORMATION SYSTEMS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "ACM Transactions on the Web",
+                "Rank": 4
+            },
+            {
+                "Field Name": "WORLD WIDE WEB-INTERNET AND WEB INFORMATION SYSTEMS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Optical Switching and Networking",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF INTELLIGENT INFORMATION SYSTEMS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Frontiers of Computer Science",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Journal of Signal Processing Systems for Signal Image and Video Technology",
+                "Rank": 4
+            },
+            {
+                "Field Name": "International Journal of Web and Grid Services",
+                "Rank": 4
+            },
+            {
+                "Field Name": "ACM TRANSACTIONS ON DATABASE SYSTEMS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "New Review of Hypermedia and Multimedia",
+                "Rank": 4
+            },
+            {
+                "Field Name": "ACM Transactions on Computer-Human Interaction",
+                "Rank": 4
+            },
+            {
+                "Field Name": "INFORMATION TECHNOLOGY AND LIBRARIES",
+                "Rank": 4
+            },
+            {
+                "Field Name": "IBM JOURNAL OF RESEARCH AND DEVELOPMENT",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Mobile Information Systems",
+                "Rank": 4
+            },
+            {
+                "Field Name": "DISTRIBUTED AND PARALLEL DATABASES",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Frontiers of Information Technology & Electronic Engineering",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Security and Communication Networks",
+                "Rank": 4
+            },
+            {
+                "Field Name": "IET Information Security",
+                "Rank": 4
+            },
+            {
+                "Field Name": "ACTA INFORMATICA",
+                "Rank": 4
+            },
+            {
+                "Field Name": "International Journal of Sensor Networks",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Journal of Ambient Intelligence and Smart Environments",
+                "Rank": 4
+            },
+            {
+                "Field Name": "WIRELESS COMMUNICATIONS & MOBILE COMPUTING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Information Technology and Control",
+                "Rank": 4
+            },
+            {
+                "Field Name": "INFORMATION PROCESSING LETTERS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "International Journal on Semantic Web and Information Systems",
+                "Rank": 4
+            },
+            {
+                "Field Name": "COMPUTER JOURNAL",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Applied Ontology",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Ad Hoc & Sensor Wireless Networks",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Journal of Organizational and End User Computing",
+                "Rank": 4
+            },
+            {
+                "Field Name": "International Journal of Ad Hoc and Ubiquitous Computing",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Computer Science and Information Systems",
+                "Rank": 4
+            },
+            {
+                "Field Name": "KSII Transactions on Internet and Information Systems",
+                "Rank": 4
+            },
+            {
+                "Field Name": "IEEE Latin America Transactions",
+                "Rank": 4
+            },
+            {
+                "Field Name": "IEICE TRANSACTIONS ON INFORMATION AND SYSTEMS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "International Arab Journal of Information Technology",
+                "Rank": 4
+            },
+            {
+                "Field Name": "ACM Transactions on Privacy and Security",
+                "Rank": 4
+            },
+            {
+                "Field Name": "International Journal of Web Services Research",
+                "Rank": 4
+            },
+            {
+                "Field Name": "RAIRO-THEORETICAL INFORMATICS AND APPLICATIONS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "IEICE TRANSACTIONS ON FUNDAMENTALS OF ELECTRONICS COMMUNICATIONS AND COMPUTER SCIENCES",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF INFORMATION SCIENCE AND ENGINEERING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "INFOR",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF DATABASE MANAGEMENT",
+                "Rank": 4
+            },
+            {
+                "Field Name": "INTERNATIONAL JOURNAL OF COOPERATIVE INFORMATION SYSTEMS",
+                "Rank": 4
+            }
+        ]
+    },
+    "COMPUTER SCIENCE, INTERDISCIPLINARY APPLICATIONS": {
+        "Journal Impact Factor": 22.737,
+        "Field Rank": [
+            {
+                "Field Name": "Journal of Statistical Software",
+                "Rank": 1
+            },
+            {
+                "Field Name": "ARCHIVES OF COMPUTATIONAL METHODS IN ENGINEERING",
+                "Rank": 1
+            },
+            {
+                "Field Name": "IEEE TRANSACTIONS ON MEDICAL IMAGING",
+                "Rank": 1
+            },
+            {
+                "Field Name": "COMPUTER-AIDED CIVIL AND INFRASTRUCTURE ENGINEERING",
+                "Rank": 1
+            },
+            {
+                "Field Name": "IEEE Transactions on Industrial Informatics",
+                "Rank": 1
+            },
+            {
+                "Field Name": "MEDICAL IMAGE ANALYSIS",
+                "Rank": 2
+            },
+            {
+                "Field Name": "COMPUTERS & EDUCATION",
+                "Rank": 2
+            },
+            {
+                "Field Name": "JOURNAL OF THE AMERICAN MEDICAL INFORMATICS ASSOCIATION",
+                "Rank": 2
+            },
+            {
+                "Field Name": "ENVIRONMENTAL MODELLING & SOFTWARE",
+                "Rank": 2
+            },
+            {
+                "Field Name": "JOURNAL OF NETWORK AND COMPUTER APPLICATIONS",
+                "Rank": 2
+            },
+            {
+                "Field Name": "APPLIED SOFT COMPUTING",
+                "Rank": 2
+            },
+            {
+                "Field Name": "Journal of Cheminformatics",
+                "Rank": 2
+            },
+            {
+                "Field Name": "NEUROINFORMATICS",
+                "Rank": 2
+            },
+            {
+                "Field Name": "IEEE Journal of Biomedical and Health Informatics",
+                "Rank": 2
+            },
+            {
+                "Field Name": "Journal of Chemical Information and Modeling",
+                "Rank": 2
+            },
+            {
+                "Field Name": "COMPUTER PHYSICS COMMUNICATIONS",
+                "Rank": 2
+            },
+            {
+                "Field Name": "INTEGRATED COMPUTER-AIDED ENGINEERING",
+                "Rank": 2
+            },
+            {
+                "Field Name": "Journal of Informetrics",
+                "Rank": 2
+            },
+            {
+                "Field Name": "ROBOTICS AND COMPUTER-INTEGRATED MANUFACTURING",
+                "Rank": 2
+            },
+            {
+                "Field Name": "SOCIAL SCIENCE COMPUTER REVIEW",
+                "Rank": 2
+            },
+            {
+                "Field Name": "ADVANCES IN ENGINEERING SOFTWARE",
+                "Rank": 2
+            },
+            {
+                "Field Name": "COMPUTERS & INDUSTRIAL ENGINEERING",
+                "Rank": 3
+            },
+            {
+                "Field Name": "COMPUTERS AND GEOTECHNICS",
+                "Rank": 3
+            },
+            {
+                "Field Name": "COMPUTERS & CHEMICAL ENGINEERING",
+                "Rank": 3
+            },
+            {
+                "Field Name": "COMPUTERS & OPERATIONS RESEARCH",
+                "Rank": 3
+            },
+            {
+                "Field Name": "INDUSTRIAL MANAGEMENT & DATA SYSTEMS",
+                "Rank": 3
+            },
+            {
+                "Field Name": "COMPUTERS & STRUCTURES",
+                "Rank": 3
+            },
+            {
+                "Field Name": "JOURNAL OF BIOMEDICAL INFORMATICS",
+                "Rank": 3
+            },
+            {
+                "Field Name": "STRUCTURAL AND MULTIDISCIPLINARY OPTIMIZATION",
+                "Rank": 3
+            },
+            {
+                "Field Name": "JOURNAL OF COMPUTATIONAL PHYSICS",
+                "Rank": 3
+            },
+            {
+                "Field Name": "COMPUTERS IN INDUSTRY",
+                "Rank": 3
+            },
+            {
+                "Field Name": "Astronomy and Computing",
+                "Rank": 3
+            },
+            {
+                "Field Name": "COMPUTATIONAL GEOSCIENCES",
+                "Rank": 3
+            },
+            {
+                "Field Name": "COMPUTER METHODS AND PROGRAMS IN BIOMEDICINE",
+                "Rank": 3
+            },
+            {
+                "Field Name": "Electronic Commerce Research and Applications",
+                "Rank": 3
+            },
+            {
+                "Field Name": "MATCH-COMMUNICATIONS IN MATHEMATICAL AND IN COMPUTER CHEMISTRY",
+                "Rank": 3
+            },
+            {
+                "Field Name": "COMPUTERS & GEOSCIENCES",
+                "Rank": 3
+            },
+            {
+                "Field Name": "IEEE-ACM Transactions on Computational Biology and Bioinformatics",
+                "Rank": 3
+            },
+            {
+                "Field Name": "COMPUTERS AND ELECTRONICS IN AGRICULTURE",
+                "Rank": 3
+            },
+            {
+                "Field Name": "SOFT COMPUTING",
+                "Rank": 3
+            },
+            {
+                "Field Name": "JOURNAL OF COMPUTER-AIDED MOLECULAR DESIGN",
+                "Rank": 3
+            },
+            {
+                "Field Name": "SAR AND QSAR IN ENVIRONMENTAL RESEARCH",
+                "Rank": 3
+            },
+            {
+                "Field Name": "COMPUTERS & FLUIDS",
+                "Rank": 3
+            },
+            {
+                "Field Name": "SCIENTOMETRICS",
+                "Rank": 3
+            },
+            {
+                "Field Name": "COMPUTERS IN BIOLOGY AND MEDICINE",
+                "Rank": 3
+            },
+            {
+                "Field Name": "SIMULATION MODELLING PRACTICE AND THEORY",
+                "Rank": 3
+            },
+            {
+                "Field Name": "IEEE TRANSACTIONS ON COMPUTER-AIDED DESIGN OF INTEGRATED CIRCUITS AND SYSTEMS",
+                "Rank": 3
+            },
+            {
+                "Field Name": "INTERNATIONAL JOURNAL OF HIGH PERFORMANCE COMPUTING APPLICATIONS",
+                "Rank": 3
+            },
+            {
+                "Field Name": "International Journal of Computational Intelligence Systems",
+                "Rank": 3
+            },
+            {
+                "Field Name": "INTERNATIONAL JOURNAL OF COMPUTER INTEGRATED MANUFACTURING",
+                "Rank": 3
+            },
+            {
+                "Field Name": "COMPUTER METHODS IN BIOMECHANICS AND BIOMEDICAL ENGINEERING",
+                "Rank": 3
+            },
+            {
+                "Field Name": "MEDICAL & BIOLOGICAL ENGINEERING & COMPUTING",
+                "Rank": 3
+            },
+            {
+                "Field Name": "Molecular Informatics",
+                "Rank": 4
+            },
+            {
+                "Field Name": "ENGINEERING WITH COMPUTERS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Journal of Computational Science",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF MOLECULAR GRAPHICS & MODELLING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "IEEE Transactions on Learning Technologies",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF COMPUTING IN CIVIL ENGINEERING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF HYDROINFORMATICS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Digital Investigation",
+                "Rank": 4
+            },
+            {
+                "Field Name": "INTERNATIONAL JOURNAL OF INFORMATION TECHNOLOGY & DECISION MAKING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "COMPUTERS & ELECTRICAL ENGINEERING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "INTERNATIONAL JOURNAL FOR NUMERICAL METHODS IN FLUIDS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Computers and Concrete",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Earth Science Informatics",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF COMPUTING AND INFORMATION SCIENCE IN ENGINEERING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "SPEECH COMMUNICATION",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF MOLECULAR MODELING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Big Data",
+                "Rank": 4
+            },
+            {
+                "Field Name": "MATHEMATICS AND COMPUTERS IN SIMULATION",
+                "Rank": 4
+            },
+            {
+                "Field Name": "CONCURRENT ENGINEERING-RESEARCH AND APPLICATIONS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF ORGANIZATIONAL COMPUTING AND ELECTRONIC COMMERCE",
+                "Rank": 4
+            },
+            {
+                "Field Name": "COMPUTATIONAL BIOLOGY AND CHEMISTRY",
+                "Rank": 4
+            },
+            {
+                "Field Name": "INFORMS JOURNAL ON COMPUTING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "VIRTUAL REALITY",
+                "Rank": 4
+            },
+            {
+                "Field Name": "R Journal",
+                "Rank": 4
+            },
+            {
+                "Field Name": "COMPUTATIONAL LINGUISTICS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "INTERNATIONAL JOURNAL OF RF AND MICROWAVE COMPUTER-AIDED ENGINEERING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Journal of Simulation",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF COMPUTATIONAL BIOLOGY",
+                "Rank": 4
+            },
+            {
+                "Field Name": "COMPUTATIONAL STATISTICS & DATA ANALYSIS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "ENGINEERING COMPUTATIONS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "QUEUEING SYSTEMS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "COMPUTER APPLICATIONS IN ENGINEERING EDUCATION",
+                "Rank": 4
+            },
+            {
+                "Field Name": "COMPUTING IN SCIENCE & ENGINEERING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "CIN-COMPUTERS INFORMATICS NURSING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "AI EDAM-ARTIFICIAL INTELLIGENCE FOR ENGINEERING DESIGN ANALYSIS AND MANUFACTURING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF NEW MUSIC RESEARCH",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF VISUALIZATION",
+                "Rank": 4
+            },
+            {
+                "Field Name": "SIMULATION-TRANSACTIONS OF THE SOCIETY FOR MODELING AND SIMULATION INTERNATIONAL",
+                "Rank": 4
+            },
+            {
+                "Field Name": "ACM Transactions on Modeling and Computer Simulation",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF COMBINATORIAL OPTIMIZATION",
+                "Rank": 4
+            },
+            {
+                "Field Name": "INTERNATIONAL JOURNAL OF MODERN PHYSICS C",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF STATISTICAL COMPUTATION AND SIMULATION",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Statistical Analysis and Data Mining",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Current Computer-Aided Drug Design",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Computer Supported Cooperative Work-The Journal of Collaborative Computing",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Language Resources and Evaluation",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Computational and Mathematical Organization Theory",
+                "Rank": 4
+            },
+            {
+                "Field Name": "MATHEMATICAL AND COMPUTER MODELLING OF DYNAMICAL SYSTEMS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "COMPUTER MUSIC JOURNAL",
+                "Rank": 4
+            },
+            {
+                "Field Name": "International Journal on Artificial Intelligence Tools",
+                "Rank": 4
+            },
+            {
+                "Field Name": "COMPEL-THE INTERNATIONAL JOURNAL FOR COMPUTATION AND MATHEMATICS IN ELECTRICAL AND ELECTRONIC ENGINEERING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "ACM Journal on Computing and Cultural Heritage",
+                "Rank": 4
+            },
+            {
+                "Field Name": "APPLICABLE ALGEBRA IN ENGINEERING COMMUNICATION AND COMPUTING",
+                "Rank": 4
+            }
+        ]
+    },
+    "COMPUTER SCIENCE, SOFTWARE ENGINEERING": {
+        "Journal Impact Factor": 4.418,
+        "Field Rank": [
+            {
+                "Field Name": "IEEE Transactions on Services Computing",
+                "Rank": 1
+            },
+            {
+                "Field Name": "IEEE Transactions on Dependable and Secure Computing",
+                "Rank": 1
+            },
+            {
+                "Field Name": "ACM TRANSACTIONS ON GRAPHICS",
+                "Rank": 1
+            },
+            {
+                "Field Name": "JOURNAL OF NETWORK AND COMPUTER APPLICATIONS",
+                "Rank": 1
+            },
+            {
+                "Field Name": "IEEE TRANSACTIONS ON MULTIMEDIA",
+                "Rank": 1
+            },
+            {
+                "Field Name": "IEEE TRANSACTIONS ON SOFTWARE ENGINEERING",
+                "Rank": 2
+            },
+            {
+                "Field Name": "ADVANCES IN ENGINEERING SOFTWARE",
+                "Rank": 2
+            },
+            {
+                "Field Name": "IEEE TRANSACTIONS ON VISUALIZATION AND COMPUTER GRAPHICS",
+                "Rank": 2
+            },
+            {
+                "Field Name": "COMMUNICATIONS OF THE ACM",
+                "Rank": 2
+            },
+            {
+                "Field Name": "COMPUTER-AIDED DESIGN",
+                "Rank": 2
+            },
+            {
+                "Field Name": "EMPIRICAL SOFTWARE ENGINEERING",
+                "Rank": 2
+            },
+            {
+                "Field Name": "ACM TRANSACTIONS ON MATHEMATICAL SOFTWARE",
+                "Rank": 2
+            },
+            {
+                "Field Name": "IEEE SOFTWARE",
+                "Rank": 2
+            },
+            {
+                "Field Name": "IEEE TRANSACTIONS ON RELIABILITY",
+                "Rank": 2
+            },
+            {
+                "Field Name": "MATHEMATICAL PROGRAMMING",
+                "Rank": 2
+            },
+            {
+                "Field Name": "INFORMATION AND SOFTWARE TECHNOLOGY",
+                "Rank": 2
+            },
+            {
+                "Field Name": "INTERNATIONAL JOURNAL OF ELECTRONIC COMMERCE",
+                "Rank": 2
+            },
+            {
+                "Field Name": "SIAM Journal on Imaging Sciences",
+                "Rank": 2
+            },
+            {
+                "Field Name": "JOURNAL OF SYSTEMS AND SOFTWARE",
+                "Rank": 2
+            },
+            {
+                "Field Name": "IMAGE AND VISION COMPUTING",
+                "Rank": 2
+            },
+            {
+                "Field Name": "SIMULATION MODELLING PRACTICE AND THEORY",
+                "Rank": 3
+            },
+            {
+                "Field Name": "COMPUTER GRAPHICS FORUM",
+                "Rank": 3
+            },
+            {
+                "Field Name": "ACM Transactions on Multimedia Computing Communications and Applications",
+                "Rank": 3
+            },
+            {
+                "Field Name": "ACM TRANSACTIONS ON SOFTWARE ENGINEERING AND METHODOLOGY",
+                "Rank": 3
+            },
+            {
+                "Field Name": "COMPUTER",
+                "Rank": 3
+            },
+            {
+                "Field Name": "IEEE INTERNET COMPUTING",
+                "Rank": 3
+            },
+            {
+                "Field Name": "JOURNAL OF MATHEMATICAL IMAGING AND VISION",
+                "Rank": 3
+            },
+            {
+                "Field Name": "IEEE MICRO",
+                "Rank": 3
+            },
+            {
+                "Field Name": "IEEE MULTIMEDIA",
+                "Rank": 3
+            },
+            {
+                "Field Name": "COMPUTER LANGUAGES SYSTEMS & STRUCTURES",
+                "Rank": 3
+            },
+            {
+                "Field Name": "JOURNAL OF VISUAL COMMUNICATION AND IMAGE REPRESENTATION",
+                "Rank": 3
+            },
+            {
+                "Field Name": "Automated Software Engineering",
+                "Rank": 3
+            },
+            {
+                "Field Name": "REQUIREMENTS ENGINEERING",
+                "Rank": 3
+            },
+            {
+                "Field Name": "JOURNAL OF THE ACM",
+                "Rank": 3
+            },
+            {
+                "Field Name": "ACM Transactions on Internet Technology",
+                "Rank": 3
+            },
+            {
+                "Field Name": "Software and Systems Modeling",
+                "Rank": 3
+            },
+            {
+                "Field Name": "International Journal of Information Security",
+                "Rank": 3
+            },
+            {
+                "Field Name": "IEEE COMPUTER GRAPHICS AND APPLICATIONS",
+                "Rank": 3
+            },
+            {
+                "Field Name": "IT Professional",
+                "Rank": 3
+            },
+            {
+                "Field Name": "SOFTWARE QUALITY JOURNAL",
+                "Rank": 3
+            },
+            {
+                "Field Name": "SOFTWARE TESTING VERIFICATION & RELIABILITY",
+                "Rank": 3
+            },
+            {
+                "Field Name": "MULTIMEDIA TOOLS AND APPLICATIONS",
+                "Rank": 3
+            },
+            {
+                "Field Name": "COMPUTER AIDED GEOMETRIC DESIGN",
+                "Rank": 3
+            },
+            {
+                "Field Name": "Advances in Computers",
+                "Rank": 3
+            },
+            {
+                "Field Name": "ACM Transactions on Knowledge Discovery from Data",
+                "Rank": 3
+            },
+            {
+                "Field Name": "MATHEMATICS AND COMPUTERS IN SIMULATION",
+                "Rank": 3
+            },
+            {
+                "Field Name": "COMPUTER STANDARDS & INTERFACES",
+                "Rank": 3
+            },
+            {
+                "Field Name": "BIT NUMERICAL MATHEMATICS",
+                "Rank": 3
+            },
+            {
+                "Field Name": "VIRTUAL REALITY",
+                "Rank": 3
+            },
+            {
+                "Field Name": "TSINGHUA SCIENCE AND TECHNOLOGY",
+                "Rank": 3
+            },
+            {
+                "Field Name": "Journal of Web Semantics",
+                "Rank": 3
+            },
+            {
+                "Field Name": "Scientific Programming",
+                "Rank": 3
+            },
+            {
+                "Field Name": "SOFTWARE-PRACTICE & EXPERIENCE",
+                "Rank": 4
+            },
+            {
+                "Field Name": "SIGMOD RECORD",
+                "Rank": 4
+            },
+            {
+                "Field Name": "IEEE SECURITY & PRIVACY",
+                "Rank": 4
+            },
+            {
+                "Field Name": "COMPUTERS & GRAPHICS-UK",
+                "Rank": 4
+            },
+            {
+                "Field Name": "OPTIMIZATION METHODS & SOFTWARE",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Journal of Software-Evolution and Process",
+                "Rank": 4
+            },
+            {
+                "Field Name": "ACM Transactions on the Web",
+                "Rank": 4
+            },
+            {
+                "Field Name": "ACM Transactions on Embedded Computing Systems",
+                "Rank": 4
+            },
+            {
+                "Field Name": "WORLD WIDE WEB-INTERNET AND WEB INFORMATION SYSTEMS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "CONCURRENCY AND COMPUTATION-PRACTICE & EXPERIENCE",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Frontiers of Computer Science",
+                "Rank": 4
+            },
+            {
+                "Field Name": "International Journal on Software Tools for Technology Transfer",
+                "Rank": 4
+            },
+            {
+                "Field Name": "International Journal of Web and Grid Services",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF UNIVERSAL COMPUTER SCIENCE",
+                "Rank": 4
+            },
+            {
+                "Field Name": "VISUAL COMPUTER",
+                "Rank": 4
+            },
+            {
+                "Field Name": "GRAPHICAL MODELS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "ACM TRANSACTIONS ON DATABASE SYSTEMS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "RANDOM STRUCTURES & ALGORITHMS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF VISUAL LANGUAGES AND COMPUTING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "ACM Transactions on Applied Perception",
+                "Rank": 4
+            },
+            {
+                "Field Name": "IBM JOURNAL OF RESEARCH AND DEVELOPMENT",
+                "Rank": 4
+            },
+            {
+                "Field Name": "IET Software",
+                "Rank": 4
+            },
+            {
+                "Field Name": "SIMULATION-TRANSACTIONS OF THE SOCIETY FOR MODELING AND SIMULATION INTERNATIONAL",
+                "Rank": 4
+            },
+            {
+                "Field Name": "ACM Transactions on Storage",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Information Visualization",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF SYSTEMS ARCHITECTURE",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Frontiers of Information Technology & Electronic Engineering",
+                "Rank": 4
+            },
+            {
+                "Field Name": "IEEE Transactions on Computational Intelligence and AI in Games",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF COMPUTER SCIENCE AND TECHNOLOGY",
+                "Rank": 4
+            },
+            {
+                "Field Name": "THEORY AND PRACTICE OF LOGIC PROGRAMMING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "ACM TRANSACTIONS ON DESIGN AUTOMATION OF ELECTRONIC SYSTEMS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "FORMAL ASPECTS OF COMPUTING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "COMPUTER JOURNAL",
+                "Rank": 4
+            },
+            {
+                "Field Name": "International Journal of Data Warehousing and Mining",
+                "Rank": 4
+            },
+            {
+                "Field Name": "ACM TRANSACTIONS ON PROGRAMMING LANGUAGES AND SYSTEMS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "SCIENCE OF COMPUTER PROGRAMMING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "FUNDAMENTA INFORMATICAE",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF FUNCTIONAL PROGRAMMING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "COMPUTER ANIMATION AND VIRTUAL WORLDS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "ALGORITHMICA",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Computer Science and Information Systems",
+                "Rank": 4
+            },
+            {
+                "Field Name": "DISCRETE MATHEMATICS AND THEORETICAL COMPUTER SCIENCE",
+                "Rank": 4
+            },
+            {
+                "Field Name": "International Journal of Wavelets Multiresolution and Information Processing",
+                "Rank": 4
+            },
+            {
+                "Field Name": "DESIGN AUTOMATION FOR EMBEDDED SYSTEMS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "IEICE TRANSACTIONS ON INFORMATION AND SYSTEMS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "PRESENCE-TELEOPERATORS AND VIRTUAL ENVIRONMENTS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "International Journal of Web Services Research",
+                "Rank": 4
+            },
+            {
+                "Field Name": "INTERNATIONAL JOURNAL OF SOFTWARE ENGINEERING AND KNOWLEDGE ENGINEERING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "ICGA JOURNAL",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Journal of Web Engineering",
+                "Rank": 4
+            },
+            {
+                "Field Name": "PROGRAMMING AND COMPUTER SOFTWARE",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF DATABASE MANAGEMENT",
+                "Rank": 4
+            }
+        ]
+    },
+    "COMPUTER SCIENCE, THEORY & METHODS": {
+        "Journal Impact Factor": 8.124,
+        "Field Rank": [
+            {
+                "Field Name": "IEEE TRANSACTIONS ON EVOLUTIONARY COMPUTATION",
+                "Rank": 1
+            },
+            {
+                "Field Name": "IEEE Transactions on Neural Networks and Learning Systems",
+                "Rank": 1
+            },
+            {
+                "Field Name": "IEEE Transactions on Cloud Computing",
+                "Rank": 1
+            },
+            {
+                "Field Name": "Information Fusion",
+                "Rank": 1
+            },
+            {
+                "Field Name": "IEEE Transactions on Information Forensics and Security",
+                "Rank": 1
+            },
+            {
+                "Field Name": "ACM COMPUTING SURVEYS",
+                "Rank": 2
+            },
+            {
+                "Field Name": "Future Generation Computer Systems-The International Journal of eScience",
+                "Rank": 2
+            },
+            {
+                "Field Name": "IEEE TRANSACTIONS ON PARALLEL AND DISTRIBUTED SYSTEMS",
+                "Rank": 2
+            },
+            {
+                "Field Name": "Swarm and Evolutionary Computation",
+                "Rank": 2
+            },
+            {
+                "Field Name": "HUMAN-COMPUTER INTERACTION",
+                "Rank": 2
+            },
+            {
+                "Field Name": "INFORMATION SYSTEMS FRONTIERS",
+                "Rank": 2
+            },
+            {
+                "Field Name": "IEEE-ACM TRANSACTIONS ON NETWORKING",
+                "Rank": 2
+            },
+            {
+                "Field Name": "COMMUNICATIONS OF THE ACM",
+                "Rank": 2
+            },
+            {
+                "Field Name": "FOUNDATIONS OF COMPUTATIONAL MATHEMATICS",
+                "Rank": 2
+            },
+            {
+                "Field Name": "INTERNATIONAL JOURNAL OF GENERAL SYSTEMS",
+                "Rank": 2
+            },
+            {
+                "Field Name": "IEEE Cloud Computing",
+                "Rank": 2
+            },
+            {
+                "Field Name": "Journal of Grid Computing",
+                "Rank": 2
+            },
+            {
+                "Field Name": "FUZZY SETS AND SYSTEMS",
+                "Rank": 2
+            },
+            {
+                "Field Name": "COMPUTER METHODS AND PROGRAMS IN BIOMEDICINE",
+                "Rank": 2
+            },
+            {
+                "Field Name": "EVOLUTIONARY COMPUTATION",
+                "Rank": 2
+            },
+            {
+                "Field Name": "JOURNAL OF SYSTEMS AND SOFTWARE",
+                "Rank": 3
+            },
+            {
+                "Field Name": "International Journal of Bio-Inspired Computation",
+                "Rank": 3
+            },
+            {
+                "Field Name": "Semantic Web",
+                "Rank": 3
+            },
+            {
+                "Field Name": "INTERNATIONAL JOURNAL OF SYSTEMS SCIENCE",
+                "Rank": 3
+            },
+            {
+                "Field Name": "IMAGE AND VISION COMPUTING",
+                "Rank": 3
+            },
+            {
+                "Field Name": "MULTIDIMENSIONAL SYSTEMS AND SIGNAL PROCESSING",
+                "Rank": 3
+            },
+            {
+                "Field Name": "ACM Transactions on Multimedia Computing Communications and Applications",
+                "Rank": 3
+            },
+            {
+                "Field Name": "INTERNATIONAL JOURNAL OF HIGH PERFORMANCE COMPUTING APPLICATIONS",
+                "Rank": 3
+            },
+            {
+                "Field Name": "Wiley Interdisciplinary Reviews-Data Mining and Knowledge Discovery",
+                "Rank": 3
+            },
+            {
+                "Field Name": "Journal of Computational Science",
+                "Rank": 3
+            },
+            {
+                "Field Name": "IEEE MULTIMEDIA",
+                "Rank": 3
+            },
+            {
+                "Field Name": "STATISTICS AND COMPUTING",
+                "Rank": 3
+            },
+            {
+                "Field Name": "JOURNAL OF PARALLEL AND DISTRIBUTED COMPUTING",
+                "Rank": 3
+            },
+            {
+                "Field Name": "PERFORMANCE EVALUATION",
+                "Rank": 3
+            },
+            {
+                "Field Name": "ACM TRANSACTIONS ON COMPUTER SYSTEMS",
+                "Rank": 3
+            },
+            {
+                "Field Name": "JOURNAL OF THE ACM",
+                "Rank": 3
+            },
+            {
+                "Field Name": "MULTIMEDIA SYSTEMS",
+                "Rank": 3
+            },
+            {
+                "Field Name": "International Journal of Information Security",
+                "Rank": 3
+            },
+            {
+                "Field Name": "COMPUTING",
+                "Rank": 3
+            },
+            {
+                "Field Name": "Cluster Computing-The Journal of Networks Software Tools and Applications",
+                "Rank": 3
+            },
+            {
+                "Field Name": "QUANTUM INFORMATION & COMPUTATION",
+                "Rank": 3
+            },
+            {
+                "Field Name": "REAL-TIME SYSTEMS",
+                "Rank": 3
+            },
+            {
+                "Field Name": "MULTIMEDIA TOOLS AND APPLICATIONS",
+                "Rank": 3
+            },
+            {
+                "Field Name": "JOURNAL OF SUPERCOMPUTING",
+                "Rank": 3
+            },
+            {
+                "Field Name": "JOURNAL OF COMPUTER AND SYSTEM SCIENCES",
+                "Rank": 3
+            },
+            {
+                "Field Name": "Big Data",
+                "Rank": 3
+            },
+            {
+                "Field Name": "Genetic Programming and Evolvable Machines",
+                "Rank": 3
+            },
+            {
+                "Field Name": "EXPERT SYSTEMS",
+                "Rank": 3
+            },
+            {
+                "Field Name": "ACM Transactions on Autonomous and Adaptive Systems",
+                "Rank": 3
+            },
+            {
+                "Field Name": "Cryptography and Communications-Discrete-Structures Boolean Functions and Sequences",
+                "Rank": 3
+            },
+            {
+                "Field Name": "ACM Transactions on Architecture and Code Optimization",
+                "Rank": 3
+            },
+            {
+                "Field Name": "JOURNAL OF HEURISTICS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "CONCURRENCY AND COMPUTATION-PRACTICE & EXPERIENCE",
+                "Rank": 4
+            },
+            {
+                "Field Name": "DESIGNS CODES AND CRYPTOGRAPHY",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Frontiers of Computer Science",
+                "Rank": 4
+            },
+            {
+                "Field Name": "MATHEMATICAL STRUCTURES IN COMPUTER SCIENCE",
+                "Rank": 4
+            },
+            {
+                "Field Name": "INFORMATION AND COMPUTATION",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF UNIVERSAL COMPUTER SCIENCE",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF CRYPTOLOGY",
+                "Rank": 4
+            },
+            {
+                "Field Name": "MICROPROCESSORS AND MICROSYSTEMS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "International Journal of Unconventional Computing",
+                "Rank": 4
+            },
+            {
+                "Field Name": "IBM JOURNAL OF RESEARCH AND DEVELOPMENT",
+                "Rank": 4
+            },
+            {
+                "Field Name": "PARALLEL COMPUTING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "CONNECTION SCIENCE",
+                "Rank": 4
+            },
+            {
+                "Field Name": "DISTRIBUTED AND PARALLEL DATABASES",
+                "Rank": 4
+            },
+            {
+                "Field Name": "SIAM JOURNAL ON COMPUTING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "ARTIFICIAL LIFE",
+                "Rank": 4
+            },
+            {
+                "Field Name": "INTERNATIONAL JOURNAL OF PARALLEL PROGRAMMING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "IET Information Security",
+                "Rank": 4
+            },
+            {
+                "Field Name": "THEORY AND PRACTICE OF LOGIC PROGRAMMING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Natural Computing",
+                "Rank": 4
+            },
+            {
+                "Field Name": "COMPUTER SYSTEMS SCIENCE AND ENGINEERING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "DISTRIBUTED COMPUTING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "FORMAL METHODS IN SYSTEM DESIGN",
+                "Rank": 4
+            },
+            {
+                "Field Name": "COMPUTER JOURNAL",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Applied Ontology",
+                "Rank": 4
+            },
+            {
+                "Field Name": "THEORETICAL COMPUTER SCIENCE",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF SYMBOLIC COMPUTATION",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF LOGIC AND COMPUTATION",
+                "Rank": 4
+            },
+            {
+                "Field Name": "INTERNATIONAL JOURNAL OF QUANTUM INFORMATION",
+                "Rank": 4
+            },
+            {
+                "Field Name": "ACM Transactions on Computational Logic",
+                "Rank": 4
+            },
+            {
+                "Field Name": "NEW GENERATION COMPUTING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "COMBINATORICS PROBABILITY & COMPUTING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "DISCRETE & COMPUTATIONAL GEOMETRY",
+                "Rank": 4
+            },
+            {
+                "Field Name": "CONSTRAINTS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "ACM Transactions on Algorithms",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Malaysian Journal of Computer Science",
+                "Rank": 4
+            },
+            {
+                "Field Name": "IET Computers and Digital Techniques",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Journal of Logical and Algebraic Methods in Programming",
+                "Rank": 4
+            },
+            {
+                "Field Name": "IEEE ANNALS OF THE HISTORY OF COMPUTING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Advances in Mathematics of Communications",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF COMPUTER AND SYSTEMS SCIENCES INTERNATIONAL",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Journal of Cellular Automata",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Logical Methods in Computer Science",
+                "Rank": 4
+            },
+            {
+                "Field Name": "COMPUTATIONAL COMPLEXITY",
+                "Rank": 4
+            },
+            {
+                "Field Name": "APPLICABLE ALGEBRA IN ENGINEERING COMMUNICATION AND COMPUTING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "THEORY OF COMPUTING SYSTEMS",
+                "Rank": 4
+            },
+            {
+                "Field Name": "JOURNAL OF MULTIPLE-VALUED LOGIC AND SOFT COMPUTING",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Problems of Information Transmission",
+                "Rank": 4
+            },
+            {
+                "Field Name": "INTERNATIONAL JOURNAL OF FOUNDATIONS OF COMPUTER SCIENCE",
+                "Rank": 4
+            },
+            {
+                "Field Name": "CRYPTOLOGIA",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Journal of Web Engineering",
+                "Rank": 4
+            },
+            {
+                "Field Name": "Romanian Journal of Information Science and Technology",
+                "Rank": 4
+            }
+        ]
+    }
+}

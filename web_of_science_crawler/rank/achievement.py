@@ -12,7 +12,7 @@ from multidict import CIMultiDict
 
 
 class Contribution(Enum):
-    UNKNOWN = 0
+    PAPER_AUTHOR = 0
     FIRST_AUTHOR = 10
     CORRESPONDING_AUTHOR = 20
 
@@ -24,12 +24,12 @@ def get_index_paper_title(paper_title: str) -> str:
 class Achievement:
     def __init__(self, author_name):
         self.paper_table = pd.DataFrame(
-            columns=('paper_title', 'pub_year', 'contribution', 'ccf_key', 'jcr_key'))
+            columns=('paper_title', 'pub_year', 'contribution', 'dblp_venue', 'wos_venue'))
         self.author_name = author_name
 
-    def add_paper(self, paper_title: str, pub_year: str, contribution: Contribution = Contribution.UNKNOWN, ccf_key: str = '', jcr_key: str = ''):
+    def add_paper(self, paper_title: str, pub_year: str, contribution: Contribution = Contribution.PAPER_AUTHOR, dblp_venue: str = '', wos_venue: str = ''):
         index_paper_title = get_index_paper_title(paper_title)
-        self.paper_table.loc[index_paper_title] = [paper_title, pub_year, contribution.name, ccf_key, jcr_key]
+        self.paper_table.loc[index_paper_title] = [paper_title, pub_year, contribution.name, dblp_venue, wos_venue]
         
     def delete_paper(self, paper_title: str):
         index_paper_title = get_index_paper_title(paper_title)
@@ -50,7 +50,7 @@ class Achievement:
 
     def load_dblp(self, dp: DBLParser):
         """
-        :return: 初始化paper_table，其中contribution与jcr_key列无法填充
+        :return: 初始化paper_table，其中contribution与wos_venue列无法填充
         """
         __dblp_journal_start_pattern = '<journal>'
         __dblp_conference_start_pattern = '<crossref>'
@@ -66,17 +66,17 @@ class Achievement:
                 pass
             return result
 
-        contribution = Contribution.UNKNOWN.name
-        jcr_key = ''
+        contribution = Contribution.PAPER_AUTHOR.name
+        wos_venue = ''
         for row in dp.data.itertuples():
             paper_title = row[3]
             pub_year = row[4]
-            ccf_key = get_venue_name(row[5])
-            self.add_paper(paper_title, pub_year, contribution, ccf_key, jcr_key)
+            dblp_venue = get_venue_name(row[5])
+            self.add_paper(paper_title, pub_year, contribution, dblp_venue, wos_venue)
 
     def load_wos(self, xp: XLSParser):
         """
-        :return: 在DBLP的基础上完善contribution与jcr_key
+        :return: 在DBLP的基础上完善contribution与wos_venue
         """
         def get_corresponding_author(reprint_addresses: str) -> str:
             ra = reprint_addresses.split('(corresponding author)')
@@ -94,15 +94,15 @@ class Achievement:
             if index_paper_title not in self.paper_table.index:
                 print("未找到dblp数据，请检查web of science论文题目与dblp论文题目是否一致")
             else:
-                dblp_fn, dblp_ln = xp.dblp_author_name.split(' ')  # ('Baopeng', 'Zhang')
+                dblp_first_name, dblp_last_name = xp.dblp_author_name.split(' ')  # ('Baopeng', 'Zhang')
                 xls_full_name_list = xls_data['Author Full Names'][0].replace(' ', '').split(';')
                 author_index = 0  # index为该作者在Author Full Name列里的序号
                 for xls_full_name in xls_full_name_list:
-                    xls_fn, xls_ln = xls_full_name.split(',')
-                    if xls_fn == dblp_fn and xls_ln == dblp_ln:
+                    xls_first_name, xls_last_name = xls_full_name.split(',')
+                    if xls_first_name == dblp_first_name and xls_last_name == dblp_last_name:
                         break
-                    if xls_fn == dblp_ln and xls_ln == dblp_fn:  # 根据Web of Science格式更改dblp的First Name与Last Name的顺序
-                        dblp_fn, dblp_ln = xls_ln, xls_fn
+                    if xls_first_name == dblp_last_name and xls_last_name == dblp_first_name:  # 根据Web of Science格式更改dblp的First Name与Last Name的顺序
+                        dblp_first_name, dblp_last_name = xls_last_name, xls_first_name
                         break
                     author_index += 1
 
@@ -110,26 +110,26 @@ class Achievement:
                 xls_corresponding_author = get_corresponding_author(xls_data['Reprint Addresses'][0])
 
                 current_contribution = self.paper_table.loc[index_paper_title, 'contribution']
-                if author_index == 0 and current_contribution == Contribution.UNKNOWN.name:
+                if author_index == 0 and current_contribution == Contribution.PAPER_AUTHOR.name:
                     c = Contribution.FIRST_AUTHOR.name
                     self.set_column_value(xls_title, 'contribution', c)
-                elif short_name == xls_corresponding_author and current_contribution == Contribution.UNKNOWN.name:
+                elif short_name == xls_corresponding_author and current_contribution == Contribution.PAPER_AUTHOR.name:
                     c = Contribution.CORRESPONDING_AUTHOR.name
                     self.set_column_value(xls_title, 'contribution', c)
 
-                self.set_column_value(xls_title, 'jcr_key', xls_data['Source Title'][0])
+                self.set_column_value(xls_title, 'wos_venue', xls_data['Source Title'][0])
 
     def get_rank_json(self):
         """
-        (1)期刊：JCR和CCF内都有信息，且均用jcr_key
+        (1)期刊：JCR和CCF内都有信息，且均用wos_venue
 
-        (2)会议：JCR没有信息，只从CCF表提取，使用ccf_key
+        (2)会议：JCR没有信息，只从CCF表提取，使用dblp_venue
         """
 
-        def get_ccf_rank_dict(ccf_key_: str, year: str) -> dict:
+        def get_ccf_rank_dict(venue_: str, year: str) -> dict:
             """
             :param year 年份
-            :param ccf_key_可能有两种情况：
+            :param venue_可能有两种情况：
 
             (1)会议：DBLP文件里提取的简称，需要与ccf.csv的“DBLP简称”或“CCF简称”列对应
 
@@ -144,8 +144,8 @@ class Achievement:
             ccf_data = pd.read_csv(f'ccf_{year}.csv', header=0, index_col=[0])
             ccf_data.fillna('', inplace=True)
 
-            if ccf_key_ in ccf_data.index:  # 期刊，直接访问索引
-                target_row = ccf_data.loc[ccf_key_]
+            if venue_ in ccf_data.index:  # 期刊，直接访问索引
+                target_row = ccf_data.loc[venue_]
                 ccf_rank_dict = {
                     'CCF Abbr': target_row['CCF简称'],
                     'Venue Full Name': target_row['全称'],
@@ -155,11 +155,11 @@ class Achievement:
                 return ccf_rank_dict
 
             # 会议，依次搜索“DBLP简称”，“CCF简称”两列。这里不是访问索引，因此需要访问第0个元素
-            target_row = ccf_data.loc[ccf_data['DBLP简称'] == ccf_key_]
+            target_row = ccf_data.loc[ccf_data['DBLP简称'] == venue_]
             if target_row.empty:
-                target_row = ccf_data.loc[ccf_data['CCF简称'] == ccf_key_.upper()]
+                target_row = ccf_data.loc[ccf_data['CCF简称'] == venue_.upper()]
                 if target_row.empty:
-                    return {'ERROR': f"无法在CCF表中查到该文献的发表刊物: {ccf_key_}"}
+                    return {}
 
             ccf_rank_dict = {
                 'CCF Abbr': target_row['CCF简称'][0],
@@ -169,22 +169,39 @@ class Achievement:
             }
             return ccf_rank_dict
 
-        def get_jcr_rank_dict(jcr_key_: str, year: str) -> dict:
+        def get_jcr_rank_dict(wos_venue_: str, year: str) -> dict:
             """
-            :param jcr_key_只有一种情况：期刊。直接查表即可
+            :param wos_venue_只有一种情况：期刊。直接查表即可
             :param year 年份，'2015'-'2020'之间的值
             """
             if int(year) >= 2020:
                 year = '2020'
             elif int(year) < 2015:
                 year = '2015'
-            jcr_rank_dict = {'ERROR': f"无法在JCR表中查到该文献的发表刊物: {jcr_key_}"}
-            if not pd.isna(jcr_key_):
+            jcr_rank_dict = {}
+            if not pd.isna(wos_venue_):
                 jcr = json.load(open(f'jcr_{year}.json'))
                 jcr = CIMultiDict(jcr)
-                if jcr.get(jcr_key_):
-                    jcr_rank_dict = jcr.get(jcr_key_)
+                if jcr.get(wos_venue_):
+                    jcr_rank_dict = jcr.get(wos_venue_)
             return jcr_rank_dict
+
+        def get_cas_rank_dict(wos_venue_:str, year: str) -> dict:
+            """
+            :param wos_venue_只有一种情况：期刊。直接查表即可
+            :param year 年份，'2015'-'2019'之间的值
+            """
+            if int(year) >= 2019:
+                year = '2019'
+            elif int(year) < 2015:
+                year = '2015'
+            cas_rank_dict = {}
+            if not pd.isna(wos_venue_):
+                cas = json.load(open(f'cas_{year}.json'))
+                cas = CIMultiDict(cas)
+                if cas.get(wos_venue_):
+                    cas_rank_dict = cas.get(wos_venue_)
+            return cas_rank_dict
 
         result = {}
         result['Author Name'] = self.author_name
@@ -195,18 +212,23 @@ class Achievement:
                 'Contribution': row[3],
                 'Venue': '',
                 'JCR': {},
+                'CAS': {},
                 'CCF': {}
             }
-            jcr_key = row[5]
+            wos_venue = row[5]
             pub_year = row[2]
-            if jcr_key:  # 先查一下JCR信息。对于Web of Science收录的期刊论文，应当一直进入本if判断语句
-                ac['JCR'] = get_jcr_rank_dict(jcr_key, pub_year)
-                ac['Venue'] = {'Journal': jcr_key}
-                ac['CCF'] = get_ccf_rank_dict(get_index_paper_title(jcr_key), pub_year)
-            if not ac['JCR']:  # JCR没有有用的信息。既有可能是会议论文，jcr_key为空；又有可能是上述jcr_key查表过程没有有用信息
-                ccf_key = row[4]
-                ac['Venue'] = {'Conference': ccf_key}
-                ac['CCF'] = get_ccf_rank_dict(ccf_key, pub_year)
+            if wos_venue:  # 先查一下JCR信息。对于Web of Science收录的期刊论文，应当一直进入本if判断语句
+                ac['JCR'] = get_jcr_rank_dict(wos_venue, pub_year)
+                ac['CAS'] = get_cas_rank_dict(wos_venue, pub_year)
+                ac['Venue'] = {'Journal': wos_venue}
+                ac['CCF'] = get_ccf_rank_dict(get_index_paper_title(wos_venue), pub_year)
+            if not ac['JCR']:  # JCR没有有用的信息。既有可能是会议论文，wos_venue为空；又有可能是上述wos_venue查表过程没有有用信息
+                dblp_venue = row[4]
+                if dblp_venue:  # DBLP上有venue信息，根据load_dblp函数逻辑，一定为会议
+                    ac['Venue'] = {'Conference': dblp_venue}
+                    ac['CCF'] = get_ccf_rank_dict(dblp_venue, pub_year)
+                else:
+                    ac['Venue'] = {'Error': 'Unknown venue. If a journal paper, please enable web of science crawler.'}
             result['Achievements'].append(ac)
 
         return result
