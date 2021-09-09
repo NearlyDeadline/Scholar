@@ -59,7 +59,7 @@ class AdvancedQuerySpider(scrapy.Spider):
 
         logger = logging.getLogger(__name__)
         logger.setLevel(level=logging.INFO)
-        handler = logging.FileHandler(self.error_log_path + "wos_log.txt")
+        handler = logging.FileHandler(self.error_log_path + "/wos_log.txt")
         handler.setLevel(logging.INFO)
         formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
         handler.setFormatter(formatter)
