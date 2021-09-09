@@ -11,6 +11,9 @@ from scrapy.crawler import CrawlerRunner
 from scrapy.utils.log import configure_logging
 from scrapy.utils.project import get_project_settings
 import logging
+from rank.achievement import Achievement, get_index_paper_title, Contribution
+from rank.xlsparser import XLSParser
+import json
 
 configure_logging()
 runner = CrawlerRunner(get_project_settings())
@@ -25,14 +28,14 @@ def main(args):
 
     logger = logging.getLogger(__name__)
     logger.setLevel(level=logging.INFO)
-    handler = logging.FileHandler(log_path + "main_log.txt")
+    handler = logging.FileHandler(log_path + "/main_log.txt")
     handler.setLevel(logging.INFO)
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     handler.setFormatter(formatter)
     logger.addHandler(handler)
 
     for dblp_raw_dir in os.listdir(input_dir):
-        logging.info(f'开始爬取{dblp_raw_dir}')
+        dblp_raw_dir = input_dir + '/' + dblp_raw_dir
         dblp_raw_file_list = glob.glob(dblp_raw_dir + '/' + article_pattern)
         if dblp_raw_file_list:
             dblp_raw_file = dblp_raw_file_list[0]  # 只选择第一个
@@ -56,26 +59,35 @@ def main(args):
         xls_dir = dblp_raw_dir + '/xls'
         if os.path.exists(xls_dir):
             logging.warning(f'已在{dblp_raw_dir}建立xls文件夹')
-            continue
         else:
             os.mkdir(xls_dir)
-        kwargs = {
+        wos_spider_kwargs = {
             'output_dir': xls_dir,
             'document_type': "",
             'output_format': 'saveToExcel',
             'query_path': wos_input_file,
             'error_log_path': log_path
         }
+        x = XLSParser(xls_dir, d.author_name)
         if wos_crawler == 1:
             try:
-                yield runner.crawl('AdvancedQuery', kwargs=kwargs)
+                yield runner.crawl('AdvancedQuery', kwargs=wos_spider_kwargs)
             except SystemExit:
                 logging.error(f'{dblp_raw_dir}发生了Web of Science爬虫错误，请检查该文件夹内爬虫日志文件')
-                continue
         else:
             pass
 
-    reactor.stop()
+        ac = Achievement(d.author_name)
+        ac.load_dblp(d)
+        ac.load_wos(x)
+
+        rank_json = ac.get_rank_json()
+
+        with open(log_path + '/' + d.author_name + '_achievement.json', 'w', encoding='utf-8') as rj:
+            rj.write(json.dumps(rank_json, indent=4, ensure_ascii=False))
+
+    if wos_crawler == 1:
+        reactor.stop()
 
 
 ap = argparse.ArgumentParser(usage='-i: Input Directory; -o: Output Directory')
@@ -84,4 +96,5 @@ ap.add_argument('-o', '--output', help='Output Directory', dest='log_path', requ
 ap.add_argument('-w', '--wos_crawler', help='Enable Web of Science Crawler if 1, disable if 0', dest='wos_crawler', type=int, choices=range(0, 2), default=0)
 args = ap.parse_args()
 main(args)
-reactor.run()  # the script will block here until the last crawl call is finished
+if args.wos_crawler == 1:
+    reactor.run()  # the script will block here until the last crawl call is finished
