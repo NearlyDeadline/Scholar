@@ -27,9 +27,9 @@ class Achievement:
             columns=('paper_title', 'pub_year', 'contribution', 'dblp_venue', 'wos_venue'))
         self.author_name = author_name
 
-    def add_paper(self, paper_title: str, pub_year: str, contribution: Contribution = Contribution.PAPER_AUTHOR, dblp_venue: str = '', wos_venue: str = ''):
+    def add_paper(self, paper_title: str, pub_year: str, contribution: str, dblp_venue: str = '', wos_venue: str = ''):
         index_paper_title = get_index_paper_title(paper_title)
-        self.paper_table.loc[index_paper_title] = [paper_title, pub_year, contribution.name, dblp_venue, wos_venue]
+        self.paper_table.loc[index_paper_title] = [paper_title, pub_year, contribution, dblp_venue, wos_venue]
         
     def delete_paper(self, paper_title: str):
         index_paper_title = get_index_paper_title(paper_title)
@@ -70,7 +70,7 @@ class Achievement:
         wos_venue = ''
         for row in dp.data.itertuples():
             paper_title = row[3]
-            pub_year = row[4]
+            pub_year = str(row[4])
             dblp_venue = get_venue_name(row[5])
             self.add_paper(paper_title, pub_year, contribution, dblp_venue, wos_venue)
 
@@ -141,7 +141,7 @@ class Achievement:
                 year = '2019'
             else:
                 year = '2015'
-            ccf_data = pd.read_csv(f'ccf_{year}.csv', header=0, index_col=[0])
+            ccf_data = pd.read_csv(f'rank/ccf_{year}.csv', header=0, index_col=[0])
             ccf_data.fillna('', inplace=True)
 
             if venue_ in ccf_data.index:  # 期刊，直接访问索引
@@ -180,7 +180,7 @@ class Achievement:
                 year = '2015'
             jcr_rank_dict = {}
             if not pd.isna(wos_venue_):
-                jcr = json.load(open(f'jcr_{year}.json'))
+                jcr = json.load(open(f'rank/jcr_{year}.json'))
                 jcr = CIMultiDict(jcr)
                 if jcr.get(wos_venue_):
                     jcr_rank_dict = jcr.get(wos_venue_)
@@ -197,7 +197,7 @@ class Achievement:
                 year = '2015'
             cas_rank_dict = {}
             if not pd.isna(wos_venue_):
-                cas = json.load(open(f'cas_{year}.json'))
+                cas = json.load(open(f'rank/cas_{year}.json'))
                 cas = CIMultiDict(cas)
                 if cas.get(wos_venue_):
                     cas_rank_dict = cas.get(wos_venue_)
@@ -211,18 +211,18 @@ class Achievement:
                 'Paper Title': row[1],
                 'Contribution': row[3],
                 'Venue': '',
-                'JCR': {},
-                'CAS': {},
+                '汤森路透分区': {},
+                '中科院分区': {},
                 'CCF': {}
             }
             wos_venue = row[5]
             pub_year = row[2]
             if wos_venue:  # 先查一下JCR信息。对于Web of Science收录的期刊论文，应当一直进入本if判断语句
-                ac['JCR'] = get_jcr_rank_dict(wos_venue, pub_year)
-                ac['CAS'] = get_cas_rank_dict(wos_venue, pub_year)
+                ac['汤森路透分区'] = get_jcr_rank_dict(wos_venue, pub_year)
+                ac['中科院分区'] = get_cas_rank_dict(wos_venue, pub_year)
                 ac['Venue'] = {'Journal': wos_venue}
                 ac['CCF'] = get_ccf_rank_dict(get_index_paper_title(wos_venue), pub_year)
-            if not ac['JCR']:  # JCR没有有用的信息。既有可能是会议论文，wos_venue为空；又有可能是上述wos_venue查表过程没有有用信息
+            if not ac['汤森路透分区']:  # JCR没有有用的信息。既有可能是会议论文，wos_venue为空；又有可能是上述wos_venue查表过程没有有用信息
                 dblp_venue = row[4]
                 if dblp_venue:  # DBLP上有venue信息，根据load_dblp函数逻辑，一定为会议
                     ac['Venue'] = {'Conference': dblp_venue}
