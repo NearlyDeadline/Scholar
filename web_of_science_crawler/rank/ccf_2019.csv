@@ -276,7 +276,7 @@ ieeesymposiumonfoundationsofcomputerscience,FOCS,IEEE Symposium on Foundations o
 ieeesymposiumonlogicincomputerscience,LICS,IEEE Symposium on Logic in Computer Science,IEEE,http://dblp.uni-trier.de/db/conf/lics/,计算机科学理论,A,lics
 computeraidedverification,CAV,Computer Aided Verification,Springer,http://dblp.uni-trier.de/db/conf/cav/,计算机科学理论,A,cav
 acmsymposiumoncomputationalgeometry,SoCG,ACM Symposium on Computational Geometry,ACM,http://dblp.uni-trier.de/db/conf/compgeom/,计算机科学理论,B,compgeom
-acmsiamsymposiumondiscretealgorithms,SODA,ACM-SIAM Symposium on Discrete Algorithms,SIAM,http://dblp.uni-trier.de/db/conf/soda/,计算机科学理论,B,soda
+acmsiamsymposiumondiscretealgorithms,SODA,ACM-SIAM Symposium on Discrete Algorithms,SIAM,http://dblp.uni-trier.de/db/conf/soda/,计算机科学理论,A,soda
 conferenceonautomateddeductiontheinternationaljointconferenceonautomatedreasoning,CADE/IJCAR,Conference on Automated Deduction/The International Joint Conference on Automated Reasoning,Springer,http://dblp.uni-trier.de/db/conf/cade/,计算机科学理论,B,cade
 ieeeconferenceoncomputationalcomplexity,CCC,IEEE Conference on Computational Complexity,IEEE,http://dblp.uni-trier.de/db/conf/coco/,计算机科学理论,B,coco
 internationalcolloquiumonautomatalanguagesandprogramming,ICALP,"International Colloquium on Automata, Languages and Programming",Springer,http://dblp.uni-trier.de/db/conf/icalp/,计算机科学理论,B,icalp
