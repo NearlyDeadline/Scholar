@@ -12,6 +12,9 @@ from bs4 import BeautifulSoup
 from scrapy.http import FormRequest
 import logging
 
+logger = logging.getLogger(__name__)
+logger.setLevel(level=logging.INFO)
+
 
 class AdvancedQuerySpider(scrapy.Spider):
     name = 'AdvancedQuery'
@@ -57,8 +60,6 @@ class AdvancedQuerySpider(scrapy.Spider):
         self.qid_list = []
         self.file_postfix_dict = {'fieldtagged': 'txt', 'saveToExcel': 'xls'}
 
-        logger = logging.getLogger(__name__)
-        logger.setLevel(level=logging.INFO)
         handler = logging.FileHandler(self.error_log_path + "/wos_log.txt")
         handler.setLevel(logging.INFO)
         formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -66,7 +67,7 @@ class AdvancedQuerySpider(scrapy.Spider):
         logger.addHandler(handler)
 
         if not query_path:
-            logging.error(f'{query_path}为空')
+            logger.error(f'{query_path}为空')
             sys.exit(-1)
 
         with open(query_path) as query_file:
@@ -74,7 +75,7 @@ class AdvancedQuerySpider(scrapy.Spider):
                 (map(lambda line: 'TI=(' + line.strip('\n').strip('.') + ')', query_file.readlines())))
 
         if self.output_path_prefix is None:
-            logging.error(f'{self.output_path_prefix}路径不正确')
+            logger.error(f'{self.output_path_prefix}路径不正确')
             sys.exit(-1)
 
     def parse(self, response, **kwargs):
@@ -82,9 +83,9 @@ class AdvancedQuerySpider(scrapy.Spider):
         result = re.search(pattern, response.url)
         if result is not None:
             self.sid = result.group(1)
-            logging.info('提取得到SID：', self.sid)
+            logger.info('提取得到SID：', self.sid)
         else:
-            logging.error('SID提取失败')
+            logger.error('SID提取失败')
             self.sid = None
             exit(-1)
 
@@ -135,7 +136,7 @@ class AdvancedQuerySpider(scrapy.Spider):
         entry = soup.find('a', attrs={'title': 'Click to view the results'})
 
         if not entry:
-            logging.error(f"No entry. Please check {query}.")
+            logger.error(f"No entry. Please check {query}.")
             return
         entry_url = 'https://apps.webofknowledge.com' + entry.get('href')
 
@@ -144,14 +145,14 @@ class AdvancedQuerySpider(scrapy.Spider):
         result = re.search(pattern, entry_url)
         if result is not None:
             qid = result.group(1)
-            logging.info('提取得到qid：', qid)
+            logger.info('提取得到qid：', qid)
             if qid in self.qid_list:
-                logging.error(f"Duplicate qid. Probably because the query '{query}' got nothing.")
+                logger.error(f"Duplicate qid. Probably because the query '{query}' got nothing.")
                 return
             self.qid_list.append(qid)
         else:
             qid = None
-            logging.error('qid提取失败')
+            logger.error('qid提取失败')
             exit(-1)
 
         # 爬第一篇
@@ -203,7 +204,7 @@ class AdvancedQuerySpider(scrapy.Spider):
 
         file_postfix = self.file_postfix_dict.get(self.output_format)
         if file_postfix is None:
-            print('找不到文件原始后缀，使用txt后缀保存')
+            logger.debug('找不到文件原始后缀，使用txt后缀保存')
             file_postfix = 'txt'
 
         sid = response.meta['sid']
@@ -230,7 +231,7 @@ class AdvancedQuerySpider(scrapy.Spider):
                 with open(filename, 'w', encoding='utf-8') as file:
                     file.write(response.text)
             else:
-                logging.error(f"Title not compatible: Expect '{expect_title}', but got '{got_title}'.")
+                logger.error(f"Title not compatible: Expect '{expect_title}', but got '{got_title}'.")
 
         elif file_postfix == 'xls':
             xls_df = pd.read_excel(response.body)
@@ -242,4 +243,4 @@ class AdvancedQuerySpider(scrapy.Spider):
                 with open(filename, 'wb+') as xls_file:
                     xls_file.write(response.body)
             else:
-                logging.error(f"Title not compatible: Expect '{expect_title}', but got '{got_title}'.")
+                logger.error(f"Title not compatible: Expect '{expect_title}', but got '{got_title}'.")

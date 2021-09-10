@@ -40,49 +40,48 @@ def main(args):
         if dblp_raw_file_list:
             dblp_raw_file = dblp_raw_file_list[0]  # 只选择第一个
         else:
-            logging.warning(f"未在{dblp_raw_dir}文件夹内发现csv文件")
+            logger.warning(f"未在{dblp_raw_dir}文件夹内发现csv文件")
             continue
         try:
             d = DBLParser(dblp_raw_file)
         except UnicodeError:
-            logging.error(f'Found Chinese Character in ({dblp_raw_dir})\n')
+            logger.error(f'Found Chinese Character in ({dblp_raw_dir})\n')
             continue
         except IndexError:
-            logging.error(f'Found Nothing in ({dblp_raw_dir})\n')
+            logger.error(f'Found Nothing in ({dblp_raw_dir})\n')
             continue
         except BaseException:
-            logging.error(f'Found Unknown Error in ({dblp_raw_dir})\n')
+            logger.error(f'Found Unknown Error in ({dblp_raw_dir})\n')
             continue
-        wos_input_file = dblp_raw_dir + '/wos_input.txt'
-        d.save_for_spider(wos_input_file)
-
-        xls_dir = dblp_raw_dir + '/xls'
-        if os.path.exists(xls_dir):
-            logging.warning(f'已在{dblp_raw_dir}建立xls文件夹')
-        else:
-            os.mkdir(xls_dir)
-        wos_spider_kwargs = {
-            'output_dir': xls_dir,
-            'document_type': "",
-            'output_format': 'saveToExcel',
-            'query_path': wos_input_file,
-            'error_log_path': log_path
-        }
-        x = XLSParser(xls_dir, d.author_name)
-        if wos_crawler == 1:
-            try:
-                yield runner.crawl('AdvancedQuery', kwargs=wos_spider_kwargs)
-            except SystemExit:
-                logging.error(f'{dblp_raw_dir}发生了Web of Science爬虫错误，请检查该文件夹内爬虫日志文件')
-        else:
-            pass
 
         ac = Achievement(d.author_name)
         ac.load_dblp(d)
-        ac.load_wos(x)
+
+        if wos_crawler == 1:
+            wos_input_file = dblp_raw_dir + '/wos_input.txt'
+            d.save_for_spider(wos_input_file)
+
+            xls_dir = dblp_raw_dir + '/xls'
+            if os.path.exists(xls_dir):
+                logger.warning(f'已在{dblp_raw_dir}建立xls文件夹')
+            else:
+                os.mkdir(xls_dir)
+            wos_spider_kwargs = {
+                'output_dir': xls_dir,
+                'document_type': "",
+                'output_format': 'saveToExcel',
+                'query_path': wos_input_file,
+                'error_log_path': log_path
+            }
+            x = XLSParser(xls_dir, d.author_name)
+            try:
+                yield runner.crawl('AdvancedQuery', kwargs=wos_spider_kwargs)
+            except SystemExit:
+                logger.error(f'{dblp_raw_dir}发生了Web of Science爬虫错误，请检查该文件夹内爬虫日志文件')
+            finally:
+                ac.load_wos(x)
 
         rank_json = ac.get_rank_json()
-
         with open(log_path + '/' + d.author_name + '_achievement.json', 'w', encoding='utf-8') as rj:
             rj.write(json.dumps(rank_json, indent=4, ensure_ascii=False))
 
