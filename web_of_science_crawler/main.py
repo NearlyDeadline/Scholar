@@ -11,7 +11,7 @@ from scrapy.crawler import CrawlerRunner
 from scrapy.utils.log import configure_logging
 from scrapy.utils.project import get_project_settings
 import logging
-from rank.achievement import Achievement, get_index_paper_title, Contribution
+from rank.achievement import Achievement, get_index, Contribution
 from rank.xlsparser import XLSParser
 import json
 
@@ -36,22 +36,23 @@ def main(args):
 
     for dblp_raw_dir in os.listdir(input_dir):
         dblp_raw_dir = input_dir + '/' + dblp_raw_dir
+        logger.info(f'Target author: {dblp_raw_dir}')
         dblp_raw_file_list = glob.glob(dblp_raw_dir + '/' + article_pattern)
         if dblp_raw_file_list:
             dblp_raw_file = dblp_raw_file_list[0]  # 只选择第一个
         else:
-            logger.warning(f"未在{dblp_raw_dir}文件夹内发现csv文件")
+            logger.warning(f"Can not find any csv file in folder ({dblp_raw_dir})'.")
             continue
         try:
             d = DBLParser(dblp_raw_file)
         except UnicodeError:
-            logger.error(f'Found Chinese Character in ({dblp_raw_dir})\n')
+            logger.error(f'Found Chinese Character in ({dblp_raw_dir})')
             continue
         except IndexError:
-            logger.error(f'Found Nothing in ({dblp_raw_dir})\n')
+            logger.error(f'Found Nothing in ({dblp_raw_dir})')
             continue
         except BaseException:
-            logger.error(f'Found Unknown Error in ({dblp_raw_dir})\n')
+            logger.error(f'Found Unknown Error in ({dblp_raw_dir})')
             continue
 
         ac = Achievement(d.author_name)
