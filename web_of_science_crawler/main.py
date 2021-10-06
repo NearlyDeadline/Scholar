@@ -86,6 +86,10 @@ def main(args):
         with open(log_path + '/' + d.author_name + '_achievement.json', 'w', encoding='utf-8') as rj:
             rj.write(json.dumps(rank_json, indent=4, ensure_ascii=False))
 
+        score_json = ac.get_score_json()
+        with open(log_path + '/' + d.author_name + '_score.json', 'w', encoding='utf-8') as rj:
+            rj.write(json.dumps(score_json, indent=4, ensure_ascii=False))
+
     if wos_crawler == 1:
         reactor.stop()
 
